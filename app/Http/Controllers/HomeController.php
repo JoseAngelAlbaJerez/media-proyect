@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Multimedia;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $multimediaItems = Multimedia::all();
+
+        return view('dashboard', compact('multimediaItems'));
     }
 }

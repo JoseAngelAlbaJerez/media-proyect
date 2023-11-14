@@ -24,7 +24,7 @@
                         <span class="badge filter badge-green" data-color="green"></span>
                         <span class="badge filter badge-orange" data-color="orange"></span>
                         <span class="badge filter badge-red" data-color="red"></span>
-                        <span class="badge filter badge-purple active" data-color="purple"></span>
+                        <span class="badge filter badge-purple" data-color="purple"></span>
                     </div>
                     <div class="clearfix"></div>
                 </a>

@@ -32,6 +32,7 @@ body > .navbar-collapse{
         left: 0;
         background-size: cover;
         background-position: center center;
+        background-color: #000000;
     }
 
     .logo{
@@ -237,7 +238,7 @@ body > .navbar-collapse{
     }
 
     &[data-color="black"]:after{
-        @include icon-gradient($default-states-color, $default-states-color);
+        background: #000000;
     }
     &[data-color="blue"]:after{
         @include icon-gradient($new-dark-blue, $blue-color-bottom);
@@ -255,7 +256,10 @@ body > .navbar-collapse{
         @include icon-gradient($new-red, $red-color-bottom);
     }
     &[data-color="purple"]:after{
-        @include icon-gradient($new-purple, $purple-color-bottom);
+        background: #000000;
+    }
+    &[data-color="negro"]:after{
+        background: #000000;
     }
 }
 
