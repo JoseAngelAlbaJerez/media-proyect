@@ -1,3 +1,9 @@
+<style>
+    .navbar{
+        background-color: #0f0f0f;
+        color: #fff;
+    }
+</style>
 <nav class="navbar navbar-expand-lg " color-on-scroll="500">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"> {{__('Youtuch') }} </a>

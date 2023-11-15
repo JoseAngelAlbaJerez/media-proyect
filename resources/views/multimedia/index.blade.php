@@ -1,49 +1,53 @@
 @section('content')
 <style>
-    .fas.fa-circle {
+.fas.fa-circle {
     font-size: 8px;
 }
-p{
+
+p {
     font-size: 13px;
 }
-video{
+
+video {
     position: relative;
-  left: 0;
-  top: 0;
-  opacity: 1;
+    left: 0;
+    top: 0;
+    opacity: 1;
 }
 </style>
-    <div class="content">
-        <div class="container-fluid">
-<h3>Placehorder categorias</h3>
-            @forelse ($multimediaItems as $index => $multimediaItem)
-                @if ($index % 3 == 0)
-                    <div class="row">
-                @endif
+<div class="content">
+    <div class="container-fluid">
+        <h3>Placehorder categorias</h3>
+        @forelse ($multimediaItems as $index => $multimediaItem)
+        @if ($index % 3 == 0)
+        <div class="row">
+            @endif
 
-                <div class="col-md-4">
-                    <video width="420" height="260" controls class="border-radius">
-                        <source src="{{ asset($multimediaItem->filepath) }}" type="video/mkv">
-                        Your browser does not support the video tag.
-                    </video>
-                    <h4>{{ $multimediaItem->title }}</h3>
-                 
-                    <p >2k views   <i class="fas fa-circle" ></i> {{ $multimediaItem->created_at->diffForHumans() }}</p>
-                </div>
+            <div class="col-md-4">
+            <video controls width="100%">
+                    <source src="{{ asset($multimediaItem->filepath) }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3>{{ $multimediaItem->title }}</h3>
 
-                @if (($index + 1) % 3 == 0 || $loop->last)
-                    </div>
-                @endif
+                    <p>2k views <i class="fas fa-circle"></i> {{ $multimediaItem->created_at->diffForHumans() }}</p>
+            </div>
 
-                @if ($loop->last && ($index + 1) % 3 != 0)
-                    </div>
-                @endif
-
-                <hr>
-            @empty
-                <p>No hay videos disponibles.</p>
-            @endforelse
+            @if (($index + 1) % 3 == 0 || $loop->last)
         </div>
-    </div>
-@endsection
+        @endif
 
+        @if ($loop->last && ($index + 1) % 3 != 0)
+    </div>
+    @endif
+
+    <hr>
+    @empty
+    <p>No hay videos disponibles.</p>
+    @endforelse
+    
+</div>
+</div>
+
+
+@endsection

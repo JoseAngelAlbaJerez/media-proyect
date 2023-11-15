@@ -9,8 +9,8 @@ Tip 2: you can also add an image using data-image tag
     <div class="sidebar-wrapper">
         <div class="logo">
         <button class="btn border-0" style='color: white;' id="sidebarToggle">
-                <i class="nc-icon nc-align-left-2" style="width:25px"></i>
-                <span>{{ __("Toggle Sidebar") }}</span>
+                <i class="fas fa-bars" ></i>
+              
             </button>
             
         </div>
@@ -38,6 +38,12 @@ Tip 2: you can also add an image using data-image tag
                                 <p>{{ __("Tu Canal") }}</p>
                             </a>
                         </li>
+                        <li class="nav-item @if($activePage == 'table') active @endif">
+                <a class="nav-link" href="{{route('multimedia.create')}}">
+                    <i class="fa fa-upload"></i>
+                    <p>{{ __("Subir Videos") }}</p>
+                </a>
+            </li>
                         <li class="nav-item @if($activePage == 'user-management') active @endif">
                             <a class="nav-link" href="{{route('multimedia.create')}}">
                                 <i class="fas fa-history"></i>
@@ -89,12 +95,7 @@ Tip 2: you can also add an image using data-image tag
 </li>
             
 
-            <li class="nav-item @if($activePage == 'table') active @endif">
-                <a class="nav-link" href="{{route('multimedia.create')}}">
-                    <i class="fa fa-upload"></i>
-                    <p>{{ __("Subir Videos") }}</p>
-                </a>
-            </li>
+           
             <li class="nav-item @if($activePage == 'typography') active @endif">
                 <a class="nav-link" href="{{route('page.index', 'typography')}}">
                     <i class="nc-icon nc-paper-2"></i>

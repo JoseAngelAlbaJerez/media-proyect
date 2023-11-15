@@ -41,11 +41,13 @@ class MultimediaController extends Controller
               'filepath' => 'required|mimes:mp4,mkv,avi,flv|max:1000240',
           ]);
           $user = auth()->user();
+          $file = $request->file('filepath');
+          $fileName = time().'_'.$request->file->getClientOriginalName();
           $multimedia = new Multimedia([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'category' => $request->input('category'),
-            'filepath' => $request->file('filepath')->store('videos', 'public'), 
+            'filepath' => $request->file('filepath')->storeAs('videos', $request->file('filepath')->getClientOriginalName(), 'public'),
             'user_id' => $user->id,
         ]);
         $user->multimedia()->save($multimedia);
