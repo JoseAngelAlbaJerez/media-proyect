@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MultimediaController;
-
+use App\Models\Multimedia;
+use Iman\Streamer\VideoStreamer;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,9 @@ Route::get('/multimedia', [App\Http\Controllers\HomeController::class, 'index'])
 
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('dashboard');
+
+Route::get('/video/{filename}', 'MultimediaController@stream')->name('multimedia.stream');
+
 
 
 

@@ -25,10 +25,15 @@ video {
 
             <div class="col-md-4">
             <video controls width="100%">
-                    <source src="{{ asset($multimediaItem->filepath) }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <source src="{{ route('multimedia.stream', $multimediaItem->filepath) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+                
                 <h3>{{ $multimediaItem->title }}</h3>
+                <h6>{{__('Usermane')}}</h6>
+                <!-- Placeholder -->
+                <a href="{{ action('MultimediaController@stream', ['filename' => $multimediaItem->filepath]) }}">Open in Another Page</a>
+                <!-- <a href="{{ url('/video/' . $multimediaItem->filepath) }}">Open in Another Page</a> -->
 
                     <p>2k views <i class="fas fa-circle"></i> {{ $multimediaItem->created_at->diffForHumans() }}</p>
             </div>

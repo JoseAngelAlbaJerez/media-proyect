@@ -38,10 +38,10 @@ class Multimedia extends Model
    {
        return $this->hasOne(Copyright::class, 'media_id');
    }
-   public function getPath()
-   {
-       $url = 'uploads/'.$this->file_path;
-       return $url;
-   }
+  public function getPath()
+    {
+        $url = 'uploads/'.$this->file_path;
+        return $url;
+    }
     
 }
