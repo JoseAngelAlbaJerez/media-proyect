@@ -218,7 +218,7 @@ a {
 
 a:hover,
 a:focus {
-    color: #42d0ed;
+    color: #5e5e5e;
     text-decoration: none;
 }
 
@@ -1127,8 +1127,8 @@ fieldset[disabled] .btn-success.active {
 .btn-info.active,
 .open>.btn-info.dropdown-toggle {
     background-color: transparent;
-    color: #42d0ed;
-    border-color: #42d0ed;
+    color: #5e5e5e;
+    border-color: #5e5e5e;
 }
 
 .btn-info.disabled,
@@ -1171,7 +1171,7 @@ fieldset[disabled] .btn-info.active {
 .btn-info.btn-fill:active,
 .btn-info.btn-fill.active,
 .open>.btn-info.btn-fill.dropdown-toggle {
-    background-color: #42d0ed;
+    background-color: #5e5e5e;
     color: #FFFFFF;
 }
 
