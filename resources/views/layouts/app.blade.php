@@ -69,8 +69,7 @@
     <script src="{{ asset('light-bootstrap/js/plugins/bootstrap-notify.js') }}"></script>
     <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
     <script src="{{ asset('light-bootstrap/js/light-bootstrap-dashboard.js?v=2.0.0') }}" type="text/javascript"></script>
-    <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
-    <script src="{{ asset('light-bootstrap/js/demo.js') }}"></script>
+
     @stack('js')
     <script>
       $(document).ready(function () {

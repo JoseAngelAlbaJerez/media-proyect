@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MultimediaController;
+use App\Models\Multimedia;
+use Iman\Streamer\VideoStreamer;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,8 @@ Route::get('/multimedia', [App\Http\Controllers\HomeController::class, 'index'])
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('dashboard');
 
+Route::get('/video/{filename}', 'App\Http\Controllers\MultimediaController@stream')->name('multimedia.stream');
+Route::get('/multimedia/{id}', [MultimediaController::class, 'show'])->name('multimedia.show');
 
 
 
@@ -40,6 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	Route::get('/multimedia/create', [MultimediaController::class, 'create'])->name('multimedia.create');
 	Route::post('/multimedia', [MultimediaController::class, 'store'])->name('multimedia.store');
+
 
 });
 

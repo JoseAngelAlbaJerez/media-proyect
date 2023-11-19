@@ -9,15 +9,15 @@ Tip 2: you can also add an image using data-image tag
     <div class="sidebar-wrapper">
         <div class="logo">
         <button class="btn border-0" style='color: white;' id="sidebarToggle">
-                <i class="nc-icon nc-align-left-2" style="width:25px"></i>
-                <span>{{ __("Toggle Sidebar") }}</span>
+                <i class="fa fa-bars" ></i>
+              
             </button>
             
         </div>
         <ul class="nav">
             <li class="nav-item @if($activePage == 'dashboard') active @endif">
                 <a class="nav-link" href="{{route('dashboard')}}">
-                    <i class="fas fa-home"></i>
+                    <!-- <i class="fas fa-home"></i> -->
                     <p>{{ __("Home") }}</p>
                 </a>
             </li>
@@ -30,14 +30,25 @@ Tip 2: you can also add an image using data-image tag
                     </p>
                    
                 </a>
-                <div class="collapse @if($activeButton =='laravel') hidden @endif" id="laravelExamples">
-                    <ul class="nav">
+                <div class="collapse @if($activeButton =='laravel') hidden @endif" id="laravelExamples" >
+                    <style>
+                        .fas{
+                            display: none;
+                            }
+                    </style>
+                    <ul class="nav" >
                         <li class="nav-item @if($activePage == 'user') active @endif">
                             <a class="nav-link" href="{{route('profile.edit')}}">
                                 <i class="fas fa-tv"></i>
                                 <p>{{ __("Tu Canal") }}</p>
                             </a>
                         </li>
+                        <li class="nav-item @if($activePage == 'table') active @endif">
+                <a class="nav-link" href="{{route('multimedia.create')}}">
+                    <i class="fas fa-upload"></i>
+                    <p>{{ __("Subir Videos") }}</p>
+                </a>
+            </li>
                         <li class="nav-item @if($activePage == 'user-management') active @endif">
                             <a class="nav-link" href="{{route('multimedia.create')}}">
                                 <i class="fas fa-history"></i>
@@ -89,12 +100,7 @@ Tip 2: you can also add an image using data-image tag
 </li>
             
 
-            <li class="nav-item @if($activePage == 'table') active @endif">
-                <a class="nav-link" href="{{route('multimedia.create')}}">
-                    <i class="fa fa-upload"></i>
-                    <p>{{ __("Subir Videos") }}</p>
-                </a>
-            </li>
+           
             <li class="nav-item @if($activePage == 'typography') active @endif">
                 <a class="nav-link" href="{{route('page.index', 'typography')}}">
                     <i class="nc-icon nc-paper-2"></i>
