@@ -1,3 +1,6 @@
+@extends('layouts.app', ['activePage' => 'user', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim &
+UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
+
 @section('content')
 <style>
 .fas.fa-circle {
@@ -50,54 +53,44 @@ video {
 </style>
 <div class="content">
     <div class="container-fluid">
-        <div id="container-category"class="row mb-4 text-white text-center ">
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        
-        </div>
+
         @forelse ($multimediaItems as $index => $multimediaItem)
-        @if ($index % 3 == 0)
-        <div class="row">
+            @if ($index % 3 == 0)
+                <div class="row">
             @endif
 
             <div class="col-md-4">
-            <a href="{{ route('multimedia.show', $multimediaItem) }}">
-                <div class="video-container">
-           <video controls width="400" height="350">
-    <source src="{{ route('multimedia.stream', $multimediaItem->filepath) }}" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
-        </div>
+                <a href="{{ route('multimedia.show', $multimediaItem) }}">
+                    <div class="video-container">
+                        <video controls width="400" height="350">
+                            <source src="{{ route('multimedia.stream', $multimediaItem->filepath) }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
 
-            <!-- OJO Poner Tumbnail en vez de video -->
-                
-                <h3>{{ $multimediaItem->title }}</h3>
-                <h6>{{ $multimediaItem->user->name}}</h6>
-                <!-- Placeholder -->
-            
-                <!-- <a href="{{ url('/video/' . $multimediaItem->filepath) }}">Open in Another Page</a> -->
+                    <h3>{{ $multimediaItem->title }}</h3>
+                    <h6>{{ $multimediaItem->user->name }}</h6>
+                    <!-- Placeholder -->
+
+                    <!-- <a href="{{ url('/video/' . $multimediaItem->filepath) }}">Open in Another Page</a> -->
 
                     <p>2k views <i class="fas fa-circle"></i> {{ $multimediaItem->created_at->diffForHumans() }}</p>
-            </div></a>
+                </a>
+            </div>
 
             @if (($index + 1) % 3 == 0 || $loop->last)
-        </div>
-        @endif
+                </div>
+            @endif
 
-        @if ($loop->last && ($index + 1) % 3 != 0)
+            @if ($loop->last && ($index + 1) % 3 != 0)
+                </div>
+            @endif
+
+            <hr>
+        @empty
+            <p>No hay videos disponibles.</p>
+        @endforelse
     </div>
-    @endif
-
-    <hr>
-    @empty
-    <p>No hay videos disponibles.</p>
-    @endforelse
-    
-</div>
 </div>
 
 <!-- Include Video.js CSS -->

@@ -24,33 +24,35 @@ Auth::routes();
 
 
 
-Route::get('/multimedia', [App\Http\Controllers\HomeController::class, 'index'])->name('multimedia.index');
-
-
+Route::get('/multimedia', 'App\Http\Controllers\MultimediaController@index')->name('multimedia.index');
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('dashboard');
-
 Route::get('/video/{filename}', 'App\Http\Controllers\MultimediaController@stream')->name('multimedia.stream');
 Route::get('/multimedia/{id}', [MultimediaController::class, 'show'])->name('multimedia.show');
-
+Route::get('/multimedia/create', 'App\Http\Controllers\MultimediaController@create')->name('multimedia.create');
 
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
-	
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
-	Route::patch('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-	Route::patch('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-	Route::resource('multimedia', 'MultimediaController');
-	
-	Route::get('/multimedia/create', [MultimediaController::class, 'create'])->name('multimedia.create');
-	Route::post('/multimedia', [MultimediaController::class, 'store'])->name('multimedia.store');
+    Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
+    
+    Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
+    Route::patch('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
+    Route::patch('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
+    Route::resource('multimedia', 'App\Http\Controllers\MultimediaController');
 
+	Route::post('/multimedia', [MultimediaController::class, 'store'])->name('multimedia.store');
+  
+    Route::get('/multimedia/{id}/edit', [MultimediaController::class, 'edit'])->name('multimedia.edit');
+    Route::put('/multimedia/{id}', [MultimediaController::class, 'update'])->name('multimedia.update');
+    Route::delete('/multimedia/{id}', [MultimediaController::class, 'destroy'])->name('multimedia.destroy');
+	Route::get('/multimedia/create', 'App\Http\Controllers\MultimediaController@create')->name('multimedia.create');
+	Route::get('/uservideo', 'App\Http\Controllers\MultimediaController@uservideo')->name('multimedia.uservideo');
 
 });
 
+
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\PageController@index']);
-	Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\PageController@index']);
+
 
 });
 

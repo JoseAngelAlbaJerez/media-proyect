@@ -11,7 +11,7 @@ class MultimediaController extends Controller
       // Index page showing a list of multimedia items
       public function index()
       {
-          $multimediaItems = Multimedia::all();
+        $multimediaItems = Multimedia::with('user')->get();
        
           return view('multimedia.index', compact('multimediaItems'));
       }
@@ -118,8 +118,7 @@ class MultimediaController extends Controller
       // Display the form to create a new multimedia item
       public function create()
       {
-          // You may want to pass additional data to the view if needed
-          return view('multimedia.create');
+          return view('profile.edit');
       }
   
       // Store a newly created multimedia item in the database
@@ -180,4 +179,11 @@ class MultimediaController extends Controller
           return redirect()->route('multimedia.index')
               ->with('success', 'Multimedia item deleted successfully.');
       }
+      public function uservideo(){
+        $multimediaItems = Multimedia::with('user') 
+        ->where('user_id', auth()->id())
+        ->get();
+
+    return view('multimedia.uservideo', compact('multimediaItems'));
+}
   }
