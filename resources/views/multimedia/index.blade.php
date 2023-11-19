@@ -37,6 +37,14 @@ video {
         color: #fff;
         text-decoration: none;
         
+        width: 100%; /* Adjust this as needed */
+        height: auto; /* Maintain aspect ratio */
+        max-width: 100%; /* Ensure video doesn't exceed its container */
+        display: block; /* Remove extra space below inline elements */
+    }
+.video-container {
+        position: relative;
+        overflow: hidden;
     }
 </style>
 <div class="content">
@@ -56,12 +64,24 @@ video {
             @endif
 
             <div class="col-md-4">
-            <img src="{{ asset('storage/multimedia/thumbnails/' . $multimediaItem->thumbnail) }}" alt="Video Thumbnail">
-    <h3>{{ $multimediaItem->title }}</h3>
-    <h6>{{__('Usermane')}}</h6>
-    <a href="{{ action('MultimediaController@stream', ['filename' => $multimediaItem->filepath]) }}">Open in Another Page</a>
-    <p>2k views <i class="fas fa-circle"></i> {{ $multimediaItem->created_at->diffForHumans() }}</p>
-</div>
+            <a href="{{ route('multimedia.show', $multimediaItem) }}">
+                <div class="video-container">
+           <video controls width="300" height="200">
+    <source src="{{ route('multimedia.stream', $multimediaItem->filepath) }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+        </div>
+
+            <!-- OJO Poner Tumbnail en vez de video -->
+                
+                <h3>{{ $multimediaItem->title }}</h3>
+                <h6>{{__('Usermane')}}</h6>
+                <!-- Placeholder -->
+            
+                <!-- <a href="{{ url('/video/' . $multimediaItem->filepath) }}">Open in Another Page</a> -->
+
+                    <p>2k views <i class="fas fa-circle"></i> {{ $multimediaItem->created_at->diffForHumans() }}</p>
+            </div></a>
 
             @if (($index + 1) % 3 == 0 || $loop->last)
         </div>

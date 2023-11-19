@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Multimedia;
-
+use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 
 class MultimediaController extends Controller
 {
@@ -15,9 +15,34 @@ class MultimediaController extends Controller
        
           return view('multimedia.index', compact('multimediaItems'));
       }
+
+
+      public function thumbnail($id)
+{
+    $multimediaItem = Multimedia::findOrFail($id);
+
+    // Define the paths
+    $videoPath = storage_path("app/public/videos/TteJsDvF6SOJvwLrWkdcyfGt7oFOpevy2M3eOp4v.mp4");
+    $thumbnailPath = storage_path("app/public/thumbnails/{$multimediaItem->id}.png");
+
+    // Use FFMpeg to generate a thumbnail
+
+    $output = FFMpeg::open('app/public/videos/TteJsDvF6SOJvwLrWkdcyfGt7oFOpevy2M3eOp4v.mp4')
+        ->getFrameFromSeconds(1)
+        ->export()
+        ->toDisk('public')
+        ->save('app/public/thumbnails/image.jpg');
+    
+
+    // Return the response with the correct public path
+    return response()->file('app/public/thumbnails/image.jpg');
+}
+
+
+
       public function stream($filename)
       {
-          $file = public_path('videos/' . $filename);
+        $file = storage_path('app\public\videos' . DIRECTORY_SEPARATOR . $filename);
       
           $size = filesize($file);
           $length = $size;
