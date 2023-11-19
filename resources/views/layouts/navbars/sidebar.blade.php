@@ -9,7 +9,7 @@ Tip 2: you can also add an image using data-image tag
     <div class="sidebar-wrapper">
         <div class="logo">
         <button class="btn border-0" style='color: white;' id="sidebarToggle">
-                <i class="fas fa-bars" ></i>
+                <i class="fa fa-bars" ></i>
               
             </button>
             
@@ -17,7 +17,7 @@ Tip 2: you can also add an image using data-image tag
         <ul class="nav">
             <li class="nav-item @if($activePage == 'dashboard') active @endif">
                 <a class="nav-link" href="{{route('dashboard')}}">
-                    <i class="fas fa-home"></i>
+                    <!-- <i class="fas fa-home"></i> -->
                     <p>{{ __("Home") }}</p>
                 </a>
             </li>
@@ -30,8 +30,13 @@ Tip 2: you can also add an image using data-image tag
                     </p>
                    
                 </a>
-                <div class="collapse @if($activeButton =='laravel') hidden @endif" id="laravelExamples">
-                    <ul class="nav">
+                <div class="collapse @if($activeButton =='laravel') hidden @endif" id="laravelExamples" >
+                    <style>
+                        .fas{
+                            display: none;
+                            }
+                    </style>
+                    <ul class="nav" >
                         <li class="nav-item @if($activePage == 'user') active @endif">
                             <a class="nav-link" href="{{route('profile.edit')}}">
                                 <i class="fas fa-tv"></i>
@@ -40,7 +45,7 @@ Tip 2: you can also add an image using data-image tag
                         </li>
                         <li class="nav-item @if($activePage == 'table') active @endif">
                 <a class="nav-link" href="{{route('multimedia.create')}}">
-                    <i class="fa fa-upload"></i>
+                    <i class="fas fa-upload"></i>
                     <p>{{ __("Subir Videos") }}</p>
                 </a>
             </li>
