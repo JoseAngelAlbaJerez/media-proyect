@@ -51,13 +51,13 @@ Tip 2: you can also add an image using data-image tag
                             </a>
                         </li>
                         <li class="nav-item @if($activePage == 'user-management') active @endif">
-                            <a class="nav-link" href="{{ route('multimedia.uservideo') }}">
+                            <a class="nav-link" href="">
                                 <i class="fas fa-history"></i>
                                 <p>{{ __("Historial") }}</p>
                             </a>
                         </li>
                         <li class="nav-item @if($activePage == 'user-management') active @endif">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="{{ route('multimedia.uservideo') }}">
 
                                 <i class="fas fa-play "></i>
                                 <p>{{ __("Tus Videos") }}</p>
