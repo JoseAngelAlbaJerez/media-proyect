@@ -43,5 +43,9 @@ class Multimedia extends Model
         $url = 'uploads/'.$this->file_path;
         return $url;
     }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     
 }

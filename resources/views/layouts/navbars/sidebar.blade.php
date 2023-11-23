@@ -8,11 +8,11 @@ Tip 2: you can also add an image using data-image tag
 -->
     <div class="sidebar-wrapper">
         <div class="logo">
-        <button class="btn border-0" style='color: white;' id="sidebarToggle">
-                <i class="fa fa-bars" ></i>
-              
+            <button class="btn border-0" style='color: white;' id="sidebarToggle">
+                <i class="fa fa-bars"></i>
+
             </button>
-            
+
         </div>
         <ul class="nav">
             <li class="nav-item @if($activePage == 'dashboard') active @endif">
@@ -21,22 +21,23 @@ Tip 2: you can also add an image using data-image tag
                     <p>{{ __("Home") }}</p>
                 </a>
             </li>
-           
+
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#laravelExamples" @if($activeButton =='laravel') aria-expanded="true" @endif>
-              <p>
+                <a class="nav-link" data-toggle="collapse" href="#laravelExamples" @if($activeButton=='laravel' )
+                    aria-expanded="true" @endif>
+                    <p>
                         {{ __('Tú') }}
-                         <i  id="my_icon"class="fas fa-angle-right"></i>
+                        <i id="my_icon" class="fas fa-angle-right"></i>
                     </p>
-                   
+
                 </a>
-                <div class="collapse @if($activeButton =='laravel') hidden @endif" id="laravelExamples" >
+                <div class="collapse @if($activeButton =='laravel') hidden @endif" id="laravelExamples">
                     <style>
-                        .fas{
-                            display: none;
-                            }
+                    .fas {
+                        display: none;
+                    }
                     </style>
-                    <ul class="nav" >
+                    <ul class="nav">
                         <li class="nav-item @if($activePage == 'user') active @endif">
                             <a class="nav-link" href="{{route('profile.edit')}}">
                                 <i class="fas fa-tv"></i>
@@ -44,63 +45,64 @@ Tip 2: you can also add an image using data-image tag
                             </a>
                         </li>
                         <li class="nav-item @if($activePage == 'table') active @endif">
-                <a class="nav-link" href="{{route('multimedia.create')}}">
-                    <i class="fas fa-upload"></i>
-                    <p>{{ __("Subir Videos") }}</p>
-                </a>
-            </li>
+                            <a class="nav-link" href="{{ route('multimedia.create') }}">
+                                <i class="fas fa-upload"></i>
+                                <p>{{ __("Subir Videos") }}</p>
+                            </a>
+                        </li>
                         <li class="nav-item @if($activePage == 'user-management') active @endif">
-                            <a class="nav-link" href="{{route('multimedia.create')}}">
+                            <a class="nav-link" href="">
                                 <i class="fas fa-history"></i>
                                 <p>{{ __("Historial") }}</p>
                             </a>
                         </li>
                         <li class="nav-item @if($activePage == 'user-management') active @endif">
-                            <a class="nav-link" href="{{route('multimedia.create')}}">
-                               
+                            <a class="nav-link" href="{{ route('multimedia.uservideo') }}">
+
                                 <i class="fas fa-play "></i>
                                 <p>{{ __("Tus Videos") }}</p>
                             </a>
                         </li>
                         <li class="nav-item @if($activePage == 'user-management') active @endif">
-                            <a class="nav-link" href="{{route('multimedia.create')}}">
+                            <a class="nav-link" href="">
                                 <i class="fas fa-clock"></i>
                                 <p>{{ __("Ver Mas Tarde") }}</p>
                             </a>
                         </li>
                         <li class="nav-item @if($activePage == 'user-management') active @endif">
-                            <a class="nav-link" href="{{route('multimedia.create')}}">
+                            <a class="nav-link" href="">
                                 <i class="fas fa-thumbs-up"></i>
                                 <p>{{ __("Videos que me Gustan") }}</p>
                             </a>
                         </li>
 
-                        
-                        
+
+
                     </ul>
                 </div>
-                
+
             </li>
             <li class="nav-item">
-    <a class="nav-link" data-toggle="collapse" href="#Subscripcion" @if($activeButton =='laravel') aria-expanded="true" @endif>
-        <p>{{ __('Subscripciones') }}</p>
-    </a>
-    <div class="collapse @if($activeButton =='laravel') hidden @endif" id="Subscripcion">
-        <ul class="nav">
-           
-                <li class="nav-item">
-                   
-                        <i class="fas fa-user"></i>
-                       
-                    </a>
-                </li>
-          
-        </ul>
-    </div>
-</li>
-            
+                <a class="nav-link" data-toggle="collapse" href="#Subscripcion" @if($activeButton=='laravel' )
+                    aria-expanded="true" @endif>
+                    <p>{{ __('Subscripciones') }}</p>
+                </a>
+                <div class="collapse @if($activeButton =='laravel') hidden @endif" id="Subscripcion">
+                    <ul class="nav">
 
-           
+                        <li class="nav-item">
+
+                            <i class="fas fa-user"></i>
+
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+
+
             <li class="nav-item @if($activePage == 'typography') active @endif">
                 <a class="nav-link" href="{{route('page.index', 'typography')}}">
                     <i class="nc-icon nc-paper-2"></i>
@@ -125,44 +127,45 @@ Tip 2: you can also add an image using data-image tag
                     <p>{{ __("Notifications") }}</p>
                 </a>
             </li>
-          
+
         </ul>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
-    $(document).ready(function(){
-        // Toggle the icon when the collapse is shown or hidden
-        $('#laravelExamples').on('show.bs.collapse hide.bs.collapse', function () {
-            var myIcon = $("#my_icon");
+$(document).ready(function() {
+    // Toggle the icon when the collapse is shown or hidden
+    $('#laravelExamples').on('show.bs.collapse hide.bs.collapse', function() {
+        var myIcon = $("#my_icon");
 
-            // Check if the collapse is shown or hidden and set the appropriate icon class
-            if ($('#laravelExamples').hasClass('show')) {
-                myIcon.removeClass("fas fa-angle-right").addClass("fas fa-angle-right fa-rotate-90");
-            } else {
-                myIcon.removeClass("fas fa-angle-right fa-rotate-90").addClass("fas fa-angle-right");
-            }
-        });
-
-        // Optionally, you can add an additional click event to handle the initial opening
-        $('#laravelExamples').on('shown.bs.collapse', function () {
-            var myIcon = $("#my_icon");
+        // Check if the collapse is shown or hidden and set the appropriate icon class
+        if ($('#laravelExamples').hasClass('show')) {
             myIcon.removeClass("fas fa-angle-right").addClass("fas fa-angle-right fa-rotate-90");
-        });
-
-        $('#laravelExamples').on('hidden.bs.collapse', function () {
-            var myIcon = $("#my_icon");
+        } else {
             myIcon.removeClass("fas fa-angle-right fa-rotate-90").addClass("fas fa-angle-right");
-        });
+        }
     });
+
+    // Optionally, you can add an additional click event to handle the initial opening
+    $('#laravelExamples').on('shown.bs.collapse', function() {
+        var myIcon = $("#my_icon");
+        myIcon.removeClass("fas fa-angle-right").addClass("fas fa-angle-right fa-rotate-90");
+    });
+
+    $('#laravelExamples').on('hidden.bs.collapse', function() {
+        var myIcon = $("#my_icon");
+        myIcon.removeClass("fas fa-angle-right fa-rotate-90").addClass("fas fa-angle-right");
+    });
+});
 </script>
 <style>
-    #my_icon {
-        transition: transform 0.2s ease; /* Adjust the transition duration as needed */
-    }
+#my_icon {
+    transition: transform 0.2s ease;
+    /* Adjust the transition duration as needed */
+}
 
-    #my_icon.fa-rotate-90 {
-        transform: rotate(90deg);
-    }
+#my_icon.fa-rotate-90 {
+    transform: rotate(90deg);
+}
 </style>

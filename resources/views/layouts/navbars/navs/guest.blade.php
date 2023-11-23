@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute">
+<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute" style="background-color: #0f0f0f;">
     <div class="container">
         <div class="navbar-wrapper">
             <a class="navbar-brand" href="#pablo">{{ __('Youtuch') }}</a>
@@ -12,7 +12,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="{{ route('dashboard') }}" class="nav-link">
-                        <i class="nc-icon nc-chart-pie-35"></i> {{ __('Dashboard') }}
+                        <i class="nc-icon nc-chart-pie-35"></i> {{ __('Home') }}
                     </a>
                 </li>
                 <li class="nav-item @if($activePage == 'register') active @endif">

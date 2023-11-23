@@ -829,10 +829,10 @@
 
 .register-page .form-check .form-check-sign::before
 {
-    color:#fff;
+    color:#000;
 }
 
 .register-page .form-check .form-check-sign::after
 {
-    color:#fff;
+    color:#000;
 }
