@@ -45,7 +45,7 @@ Tip 2: you can also add an image using data-image tag
                             </a>
                         </li>
                         <li class="nav-item @if($activePage == 'table') active @endif">
-                            <a class="nav-link" href="{{ route('multimedia.create') }}">
+                            <a class="nav-link" href="{{ route('multimedias') }}">
                                 <i class="fas fa-upload"></i>
                                 <p>{{ __("Subir Videos") }}</p>
                             </a>

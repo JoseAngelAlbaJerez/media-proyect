@@ -32,9 +32,6 @@ Route::get('/multimedia/{id}', [MultimediaController::class, 'show'])->name('mul
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 
-Route::get('/multimedia/create', function () {
-    return View::make('multimedia.create');
-})->name('multimedia.create');
 
 
 
@@ -54,7 +51,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/multimedia/{id}', [MultimediaController::class, 'update'])->name('multimedia.update');
     Route::delete('/multimedia/{id}', [MultimediaController::class, 'destroy'])->name('multimedia.destroy');
 
-  
+    Route::get('/multimedia', function () {
+        return view('multimedia.create');
+    })->name('multimedias');
 	Route::get('/uservideo', 'App\Http\Controllers\MultimediaController@uservideo')->name('multimedia.uservideo');
 
 });

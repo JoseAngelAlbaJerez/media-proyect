@@ -11,10 +11,10 @@ class MultimediaController extends Controller
       // Index page showing a list of multimedia items
       public function index()
       {
-          $multimediaItems = Multimedia::with('user', 'category')->get();
-          $categories = Category::all();
+          $multimediaItems = Multimedia::with('user')->get();
+       
   
-          return view('multimedia.index', compact('multimediaItems', 'categories'));
+          return view('multimedia.index', compact('multimediaItems'));
       }
 
 
