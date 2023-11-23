@@ -5357,7 +5357,7 @@ License - nucleoapp.com/license/
 }
 
 .wrapper-full-page .navbar .nav-item.active .nav-link {
-    background-color: rgba(255, 255, 255, 0.2) !important;
+    background-color: rgba(255, 253, 253, 0.2) !important;
 }
 
 .wrapper-full-page .navbar .nav-link:not(.btn):hover {
@@ -5381,7 +5381,7 @@ License - nucleoapp.com/license/
 }
 
 .wrapper-full-page .footer .copyright {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgb(255, 255, 255);
 }
 
 .wrapper-full-page .footer .copyright a {
@@ -5414,7 +5414,7 @@ License - nucleoapp.com/license/
 
 .full-page:before {
     opacity: .33;
-    background: #000000;
+    background: #fff;
 }
 
 .full-page.register-page .content:first-of-type {

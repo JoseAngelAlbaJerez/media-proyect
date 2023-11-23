@@ -34,7 +34,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-md-8">
-                                <h3 class="mb-0">{{ __('Editar Video') }}</h3>
+                                <h3 class="mb-0">{{ __('Subir Video') }}</h3>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                             <h6 class="heading-small text-muted mb-4">{{ __('Información del Video') }}</h6>
 
                             @include('alerts.success')
-
+                         
 
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('title') ? ' has-danger' : '' }}">
@@ -56,7 +56,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                                     </label>
                                     <input type="text" name="title" id="input-title"
                                         class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}"
-                                        placeholder="{{ $multimediaItem->title }}"
+                                        placeholder="{{ __('Titulo') }}"
                                         value="{{ old('title', auth()->user()->title) }}" required autofocus>
 
                                     @include('alerts.feedback', ['field' => 'title'])
@@ -66,7 +66,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                                             class="w3-xxlarge fa fa-info"></i>{{ __('Descripción') }}</label>
                                     <textarea name="description" id="input-description"
                                         class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}"
-                                        placeholder="{{ $multimediaItem->description }}"
+                                        placeholder="{{ __('Description') }}"
                                         required>{{ old('description', auth()->user()->description) }}</textarea>
                                     @include('alerts.feedback', ['field' => 'email'])
                                 </div>
@@ -77,29 +77,18 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                                         class="form-control{{ $errors->has('category') ? ' is-invalid' : '' }}"
                                         required>
 
-
+                                   
                                     @include('alerts.feedback', ['field' => 'category'])
                                 </div>
                                 <div class="form-group{{ $errors->has('file') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-filepath"><i
                                             class="w3-xxlarge 	fa fa-play"></i>{{ __('Video') }}</label>
                                     <input type="file" name="filepath" id="input-filepath"
-                                        class="form-control{{ $errors->has('filepath') ? ' is-invalid' : '' }}" required
-                                        onchange="previewVideo(this)">
+                                        class="form-control{{ $errors->has('filepath') ? ' is-invalid' : '' }}"
+                                        required onchange="previewVideo(this)">
 
                                     @include('alerts.feedback', ['field' => 'filepath'])
                                 </div>
-
-                                <div class="form-group{{ $errors->has('thumbnail') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-thumbnail">
-                                        <i class="w3-xxlarge fa fa-image"></i>{{ __('Thumbnail') }}
-                                    </label>
-                                    <input type="file" name="thumbnail" id="input-thumbnail"
-                                        class="form-control{{ $errors->has('thumbnail') ? ' is-invalid' : '' }}"
-                                        required onchange="previewThumbnail(this)">
-                                    @include('alerts.feedback', ['field' => 'thumbnail'])
-                                </div>
-
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-default mt-4">{{ __('Save') }}</button>
                                 </div>
@@ -117,49 +106,38 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
 
 
                         <div class="card-body mt-5">
-                            <h2>{{$multimediaItem->title}}</h2>
+                            <h2>Preview</h2>
 
 
-                            @if (!empty($multimediaItem->filepath))
-                            <video id="my-video" class="video-js vjs-default-skin" controls width="100%" height="100%"
-                                data-setup="{}">
-                                <source
-                                    src="{{ route('multimedia.stream', ['filename' => $multimediaItem->filepath]) }}"
-                                    type="video/mp4">
-                                Your browser does not support the video tag.
+                            <video id="video-preview" width="100%" controls style="max-height: 400px;">
+                                <source id="video-source" src="#" type="video/mp4">
                             </video>
-                            @else
-                            <p>No video available.</p>
-                            @endif
 
-                            <img id="thumbnail-preview" src="" alt="Thumbnail Preview" style="display: none; max-width: 100%; height: auto;">
-                        </div>
+                            </video>
 
-                        </video>
-
-                        <p class="description">{{ old('email', auth()->user()->description) }}</p>
-                        <hr>
-                        <div>
-                            <div class="button-container mr-auto ml-auto">
-                                <button href="#" class="btn btn-simple btn-link btn-icon">
-                                    <i class="fa fa-facebook-square"></i>
-                                </button>
-                                <button href="#" class="btn btn-simple btn-link btn-icon">
-                                    <i class="fa fa-twitter"></i>
-                                </button>
-                                <button href="#" class="btn btn-simple btn-link btn-icon">
-                                    <i class="fa fa-google-plus-square"></i>
-                                </button>
+                            <p class="description">{{ old('email', auth()->user()->description) }}</p>
+                            <hr>
+                            <div>
+                                <div class="button-container mr-auto ml-auto">
+                                    <button href="#" class="btn btn-simple btn-link btn-icon">
+                                        <i class="fa fa-facebook-square"></i>
+                                    </button>
+                                    <button href="#" class="btn btn-simple btn-link btn-icon">
+                                        <i class="fa fa-twitter"></i>
+                                    </button>
+                                    <button href="#" class="btn btn-simple btn-link btn-icon">
+                                        <i class="fa fa-google-plus-square"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    @endsection
+        @endsection
 
-    <script>
+        <script>
     function previewVideo(input) {
         var videoPreview = document.getElementById('video-preview');
         var videoSource = document.getElementById('video-source');
@@ -170,19 +148,4 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
         videoSource.src = objectURL;
         videoPreview.load();
     }
-    </script>
-
-<script>
-function previewThumbnail(input) {
-    var thumbnailPreview = document.getElementById('thumbnail-preview');
-    var file = input.files[0];
-
-    if (file) {
-        var objectURL = URL.createObjectURL(file);
-        thumbnailPreview.src = objectURL;
-        thumbnailPreview.style.display = 'block';
-    } else {
-        thumbnailPreview.style.display = 'none';
-    }
-}
 </script>

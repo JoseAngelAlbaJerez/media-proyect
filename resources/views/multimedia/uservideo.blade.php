@@ -74,8 +74,16 @@ video {
 
                     <!-- <a href="{{ url('/video/' . $multimediaItem->filepath) }}">Open in Another Page</a> -->
 
+                    
                     <p>2k views <i class="fas fa-circle"></i> {{ $multimediaItem->created_at->diffForHumans() }}</p>
                 </a>
+                <div>
+                <form action="{{ route('multimedia.destroy', $multimediaItem) }}" method="POST" style="display: inline;">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger btn-borrar">Borrar</button>
+</form>   <a class="btn btn-primary" href="{{ route('multimedia.edit', $multimediaItem) }}">Editar</a>
+                </div>
             </div>
 
             @if (($index + 1) % 3 == 0 || $loop->last)

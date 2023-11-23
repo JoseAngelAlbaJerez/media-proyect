@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MultimediaController;
 use App\Models\Multimedia;
 use Iman\Streamer\VideoStreamer;
-
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\WelcomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +17,7 @@ use Iman\Streamer\VideoStreamer;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Auth::routes();
 
@@ -28,7 +27,13 @@ Route::get('/multimedia', 'App\Http\Controllers\MultimediaController@index')->na
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('dashboard');
 Route::get('/video/{filename}', 'App\Http\Controllers\MultimediaController@stream')->name('multimedia.stream');
 Route::get('/multimedia/{id}', [MultimediaController::class, 'show'])->name('multimedia.show');
-Route::get('/multimedia/create', 'App\Http\Controllers\MultimediaController@create')->name('multimedia.create');
+Route::get('/multimedia/create', [MultimediaController::class, 'create'])->name('multimedia.create');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+
+
+
+
+
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -44,7 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/multimedia/{id}/edit', [MultimediaController::class, 'edit'])->name('multimedia.edit');
     Route::put('/multimedia/{id}', [MultimediaController::class, 'update'])->name('multimedia.update');
     Route::delete('/multimedia/{id}', [MultimediaController::class, 'destroy'])->name('multimedia.destroy');
-	Route::get('/multimedia/create', 'App\Http\Controllers\MultimediaController@create')->name('multimedia.create');
+	Route::get('/multimedia/create', [MultimediaController::class, 'create'])->name('multimedia.create');
+  
 	Route::get('/uservideo', 'App\Http\Controllers\MultimediaController@uservideo')->name('multimedia.uservideo');
 
 });

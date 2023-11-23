@@ -1,26 +1,27 @@
 @extends('layouts.app', ['activePage' => 'user', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim &
 UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
 
+
 @section('content')
 <div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
                 {{-- Video Player --}}
-             
-                    <div class="video-container">
-                        @if (!empty($multimediaItem->filepath))
-                        <video id="my-video" class="video-js vjs-default-skin" controls width="1100" height="800"
-                            data-setup="{}">
-                            <source src="{{ route('multimedia.stream', ['filename' => $multimediaItem->filepath]) }}"
-                                type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        @else
-                        <p>No video available.</p>
-                        @endif
-                    </div>
-            
+
+                <div class="video-container m-2">
+                    @if (!empty($multimediaItem->filepath))
+                    <video id="my-video" class="video-js vjs-default-skin rounded" controls width="1030" height="800"
+                        data-setup="{}">
+                        <source src="{{ route('multimedia.stream', ['filename' => $multimediaItem->filepath]) }}"
+                            type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    @else
+                    <p>No video available.</p>
+                    @endif
+                </div>
+
 
 
                 {{-- Video Description --}}
@@ -29,7 +30,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                         <h3>{{$multimediaItem->title}}</h3>
                     </div>
                     <div class="row">
-                        <div class="col-auto ml-2">
+                        <div class="col-auto ml-3">
                             <img src="https://dictionary.cambridge.org/images/thumb/circle_noun_001_02738.jpg?version=5.0.357"
                                 width="50" height="47" alt="">
                         </div>
@@ -102,8 +103,15 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                 </div>
             </div>
 
+            {{-- Lista de Imágenes --}}
             <div class="col-md-4">
-                {{-- Other content in the right column --}}
+                <ul>
+                   
+                        <li>
+                            
+                        </li>
+                  
+                </ul>
             </div>
         </div>
     </div>
