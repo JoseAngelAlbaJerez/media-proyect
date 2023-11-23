@@ -55,12 +55,10 @@ video {
 <div class="content">
     <div class="container-fluid">
         <div id="container-category"class="row mb-4 text-white text-center ">
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
+            @foreach ($multimediaItems as $index => $multimediaItem)
+        <div class="col-2"><a href="#" style="color: #fff;">{{$multimediaItem->category}} </a></div>
+
+        @endforeach
         
         </div>
         @forelse ($multimediaItems as $index => $multimediaItem)

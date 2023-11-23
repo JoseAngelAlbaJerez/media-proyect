@@ -23,8 +23,39 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
 // });
 </script>
 
+<style>
+   input[type="file"]::file-selector-button {
+        /* Future CSS specification */
+        font-weight: bold;
+        color: white;
+        background-color: #0F0F0F;
+        border: 1px solid #0F0F0F;
+        border-radius: 3px;
+        padding: 0.2em 0.4em;
+        cursor: pointer;
+       
+       
+    }
+    input[type="file"] {
+       
+        color: white;
+        background-color: #0F0F0F;
+        border: 1px solid #0F0F0F;
+        border-radius: 3px;
+        padding-bottom: 35px; 
+        padding-right: 20px;
+        cursor: pointer;
+    
+    }
+    input[type="file"]::file-selector-button:hover,
+    input[type="file"]:hover {
+    
+        background-color: #1A1A1A;
+    }
+   
+</style>
 @section('content')
-<div class="content">
+<div class="content mt-5 ">
     <div class="container-fluid">
         <div class="section-image">
             <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
@@ -85,12 +116,12 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                                             class="w3-xxlarge 	fa fa-play"></i>{{ __('Video') }}</label>
                                     <input type="file" name="filepath" id="input-filepath"
                                         class="form-control{{ $errors->has('filepath') ? ' is-invalid' : '' }}"
-                                        required onchange="previewVideo(this)">
+                                        required onchange="previewVideo(this)"  style=" background-color: #fff; color: #0F0F0F; border: 1px solid #0F0F0F; cursor: pointer;">
 
                                     @include('alerts.feedback', ['field' => 'filepath'])
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-default mt-4">{{ __('Save') }}</button>
+                                    <button type="submit" class="btn btn-default mt-4" style=" border-color: #0F0F0F; color: #0F0F0F;">{{ __('Save') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -135,6 +166,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                 </div>
             </div>
         </div>
+       
         @endsection
 
         <script>
