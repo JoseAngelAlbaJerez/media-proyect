@@ -52,7 +52,7 @@
 
                                     <div class="form-group row mb-0 justify-content-center">
                                         <div class="offset-md-4">
-                                            <button type="submit" class="btn btn-warning btn-wd">
+                                            <button type="submit" class="btn  btn-wd">
                                                 {{ __('Reset Password') }}
                                             </button>
                                         </div>

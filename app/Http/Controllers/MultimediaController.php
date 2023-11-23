@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Multimedia;
 use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
-
+use App\Models\Category;
 class MultimediaController extends Controller
 {
       // Index page showing a list of multimedia items

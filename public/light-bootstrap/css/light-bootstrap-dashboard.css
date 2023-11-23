@@ -963,6 +963,14 @@ fieldset[disabled] .btn.active {
     border-color: transparent;
     color: #797979;
 }
+.btn-editar, .btn-borrar{
+    border: 1px solid #888888;
+    color: #888888;
+    font-size: large;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+    
+}
 
 .btn.btn-link {
     border-color: transparent !important;
@@ -1320,8 +1328,8 @@ fieldset[disabled] .btn-danger.active {
 }
 
 .btn-neutral {
-    border-color: #FFFFFF;
-    color: #FFFFFF;
+    border-color: #212529;
+    color: #212529;
 }
 
 .btn-neutral:hover,
@@ -1545,9 +1553,9 @@ fieldset[disabled] .btn-neutral.active {
 
 .form-control {
     background-color: #FFFFFF;
-    border: 1px solid #E3E3E3;
+    border: 1px solid #565656;
     border-radius: 4px;
-    color: #565656;
+    color: #000;
     padding: 8px 12px;
     height: 40px;
     -webkit-box-shadow: none;
@@ -1560,7 +1568,7 @@ fieldset[disabled] .btn-neutral.active {
     -webkit-box-shadow: none;
     box-shadow: none;
     outline: 0 !important;
-    color: #333333;
+    color: #000;
 }
 
 .has-success .form-control,
@@ -2873,7 +2881,7 @@ Copyright (c) 2015 Daniel Eden
 .card label {
     font-size: 0.875rem;
     font-weight: 400;
-    color: #9A9A9A;
+    color: #000;
     margin-bottom: 0px;
 }
 .card.card-login .form-check {
@@ -5428,14 +5436,14 @@ License - nucleoapp.com/license/
 }
 
 .full-page>.content .card-register .card-title {
-    color: #FFFFFF;
+    color: #000;
 }
 
 .full-page>.content .card-register .card-subtitle {
     margin-top: 10px;
     margin-bottom: 0;
     font-size: 21px;
-    color: #FFFFFF;
+    color: #000;
 }
 
 .full-page>.content .card-register .footer {
@@ -5447,7 +5455,7 @@ License - nucleoapp.com/license/
 }
 
 .full-page>.content .card-register .media {
-    color: #FFFFFF;
+    color: #000;
     margin-bottom: 15px;
 }
 

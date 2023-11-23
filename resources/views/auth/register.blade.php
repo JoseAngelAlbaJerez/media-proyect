@@ -1,7 +1,7 @@
 @extends('layouts.app', ['activePage' => 'register', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim & UPDIVISION'])
 
 @section('content')
-    <div class="full-page register-page section-image" data-color="orange" data-image="{{ asset('light-bootstrap/img/bg5.jpg') }}">
+    <div class="full-page register-page section-image" data-color="white" data-image="{{ asset('light-bootstrap/img/bg5.jpg') }}">
         <div class="content">
             <div class="container">
                 <div class="card card-register card-plain text-center">
@@ -16,7 +16,7 @@
                                     </div>
                                     <div class="media-body">
                                         <h4>{{ __('Free Account') }}</h4>
-                                        <p>{{ __('Here you can write a feature description for your dashboard, let the users know what is the value that you give them.') }}</p>
+                                        <p>{{ __('Welcome to a world of possibilities with our free account option! Gain access to a diverse range of multimedia content, including movies, TV shows, music, and more. Experience the value we bring to your entertainment journey.') }}</p>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -26,8 +26,8 @@
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <h4>{{ __('Awesome Performances') }}</h4>
-                                        <p>{{ __('Here you can write a feature description for your dashboard, let the users know what is the value that you give them.') }}</p>
+                                        <h4>{{ __('Personalized Recommendations') }}</h4>
+                                        <p>{{ __('Enjoy personalized recommendations based on your viewing history and preferences. Our advanced algorithm ensures that you discover new and exciting content tailored just for you.') }}</p>
                                     </div>
                                 </div>
                                 <div class="media">
@@ -37,8 +37,8 @@
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <h4>{{ __('Global Support') }}</h4>
-                                        <p>{{ __('Here you can write a feature description for your dashboard, let the users know what is the value that you give them.') }}</p>
+                                        <h4>{{ __('Global Community') }}</h4>
+                                        <p>{{ __('Join a thriving global community of media enthusiasts. Connect with like-minded users, share your favorite media picks, and stay updated on the latest trends from around the world.') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -63,9 +63,9 @@
                                             </div>
                                             <div class="form-group d-flex justify-content-center">
                                                 <div class="form-check rounded col-md-10 text-left">
-                                                    <label class="form-check-label text-white d-flex align-items-center">
+                                                    <label class="form-check-label  d-flex align-items-center">
                                                         <input class="form-check-input" name="agree" type="checkbox" required >
-                                                        <span class="form-check-sign"></span>
+                                                        <span class="form-check-sign "></span>
                                                         <b>{{ __('Agree with terms and conditions') }}</b>
                                                     </label>
                                                 </div>

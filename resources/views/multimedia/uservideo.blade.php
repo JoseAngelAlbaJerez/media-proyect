@@ -81,8 +81,8 @@ video {
                 <form action="{{ route('multimedia.destroy', $multimediaItem) }}" method="POST" style="display: inline;">
     @csrf
     @method('DELETE')
-    <button type="submit" class="btn btn-danger btn-borrar">Borrar</button>
-</form>   <a class="btn btn-primary" href="{{ route('multimedia.edit', $multimediaItem) }}">Editar</a>
+    <button type="submit" class="btn  btn-borrar bg-dark"><i class="fa fa-trash mr-2" aria-hidden="true"></i>Borrar</button>
+</form>   <a class="btn btn-editar rounded "  href="{{ route('multimedia.edit', $multimediaItem) }}"><i class="fa fa-edit" aria-hidden="true"></i> Editar</a>
                 </div>
             </div>
 

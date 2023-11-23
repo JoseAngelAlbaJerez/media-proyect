@@ -6,6 +6,10 @@
 
 p {
     font-size: 13px;
+    padding: auto;
+}
+h4{
+    color: #0F0F0F;
 }
 
 video {
@@ -64,10 +68,10 @@ video {
         <div class="row">
             @endif
 
-            <div class="col-md-4">
+            <div class="col-md-4" >
             <a href="{{ route('multimedia.show', $multimediaItem) }}">
-                <div class="video-container">
-           <video controls width="400" height="250">
+                <div class="video-container"  style="width: 400px; height: 250px; overflow: hidden; background-color: #0F0F0F;">
+           <video width="400" height="250">
     <source src="{{ route('multimedia.stream', $multimediaItem->filepath) }}" type="video/mp4">
     Your browser does not support the video tag.
 </video>
@@ -75,7 +79,7 @@ video {
 
             <!-- OJO Poner Tumbnail en vez de video -->
                 
-                <h3>{{ $multimediaItem->title }}</h3>
+                <h4>{{ $multimediaItem->title }}</h4>
                 <h6>{{ $multimediaItem->user->name}}</h6>
                 <!-- Placeholder -->
             
