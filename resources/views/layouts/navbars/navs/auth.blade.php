@@ -3,6 +3,53 @@
         background-color: #0f0f0f;
         color: #fff;
     }
+  
+#searchbar::placeholder {
+    color: #FFF;
+}
+#searchbar{
+   
+        margin: 0px; 
+        padding: 0px; 
+        width: 99%; 
+        outline: none; 
+        height: 43px; 
+        color: #FFF; 
+    background-color: #0F0F0F;
+    border: 1px solid white;
+    border-radius: 30px 0 0 30px;
+    padding-left: 10px; 
+      
+}
+#clear { 
+        position: absolute; 
+        top: 0; 
+      
+        right: 0px; 
+        z-index: 2; 
+        border: none; 
+        top: 2px; 
+        height: 40px; 
+        cursor: pointer; 
+        color: white; 
+        background-color: #1e90ff; 
+        transform: translateX(2px); 
+        margin-right: 7px;
+        background-color: #FFF;
+        color: #0F0F0F;
+        width: 60px;
+    }
+    .buttonIn { 
+       
+        position: relative;
+        margin-left: 450px;
+    margin-top: 23px;
+    width: 500px;
+    height: 50px;
+    
+    
+    } 
+
 </style>
 <nav class="navbar navbar-expand-lg " color-on-scroll="500">
     <div class="container-fluid">
@@ -31,11 +78,16 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nc-icon nc-zoom-split"></i>
-                        <span class="d-lg-block">&nbsp;{{ __('Search') }}</span>
-                        
-                    </a>
+                    <!-- Barra de búsqueda -->
+                    
+                        <!-- <input class="form-control mr-sm-2 " type="search" placeholder="{{ __('Search') }}"
+                            aria-label="{{ __('Search') }}" id="searchbar"> -->
+                            <div class="buttonIn"> 
+                                <input type="search" class=" mr-sm-2" placeholder="{{ __('Search') }}"
+                            aria-label="{{ __('Search') }}" id="searchbar"> 
+                                <button id="clear"><i class="fa fa-search" aria-hidden="true"></i> </button> 
+                            </div> 
+                  
                 </li>
             </ul>
             <ul class="navbar-nav   d-flex align-items-center">
