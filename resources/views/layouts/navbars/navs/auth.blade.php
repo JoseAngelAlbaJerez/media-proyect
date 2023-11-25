@@ -17,7 +17,7 @@
     height: 43px;
     color: #FFF;
     background-color: #0F0F0F;
-    border: 1px solid white;
+    border: 3px solid white;
     border-radius: 30px 0 0 30px;
     padding-left: 10px;
 
