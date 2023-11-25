@@ -18,6 +18,18 @@ class MultimediaController extends Controller
       }
 
 
+      public function search(Request $request)
+      {
+          $query = $request->input('query');
+      
+          // Realiza la búsqueda en el título y descripción de los elementos multimedia
+          $results = Multimedia::where('title', 'like', "%$query%")
+                               ->orWhere('description', 'like', "%$query%")
+                               ->get();
+      
+          return view('multimedia.search', compact('results', 'query'));
+      }
+
       public function thumbnail($id)
 {
     $multimediaItem = Multimedia::findOrFail($id);

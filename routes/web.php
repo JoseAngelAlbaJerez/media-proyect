@@ -31,6 +31,7 @@ Route::get('/video/{filename}', 'App\Http\Controllers\MultimediaController@strea
 Route::get('/multimedia/{id}', [MultimediaController::class, 'show'])->name('multimedia.show');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/search', 'App\Http\Controllers\MultimediaController@search')->name('search')->middleware('auth');
 
 
 
@@ -56,6 +57,10 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('multimedias');
 	Route::get('/uservideo', 'App\Http\Controllers\MultimediaController@uservideo')->name('multimedia.uservideo');
 
+    Route::get('/search', 'App\Http\Controllers\MultimediaController@search')->name('search')->middleware('auth');
+
+
+
 });
 
 
@@ -64,4 +69,3 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 });
-
