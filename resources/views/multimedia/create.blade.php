@@ -121,7 +121,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                                     @include('alerts.feedback', ['field' => 'filepath'])
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-default mt-4" style=" border-color: #0F0F0F; color: #0F0F0F;">{{ __('Save') }}</button>
+                                    <button type="submit" class="btn btn-default mt-4" style=" border-color: #0F0F0F; color: #0F0F0F;">{{ __('Guardar') }}</button>
                                 </div>
                             </div>
                         </form>
