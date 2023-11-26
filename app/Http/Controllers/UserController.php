@@ -18,5 +18,11 @@ class UserController extends Controller
     {
         return view('users.index', ['users' => $model->paginate(15)]);
     }
+    public function mostrarSidebar()
+    {
+        $usuarios = User::all(); // Otra lógica para obtener la lista de usuarios
+        return view('layouts.navbars.sidebar', compact('usuarios'));
+    }
+    
  
 }

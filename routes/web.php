@@ -38,6 +38,7 @@ Route::get('/search', 'App\Http\Controllers\MultimediaController@search')->name(
 
 
 
+
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
     
@@ -58,6 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/uservideo', 'App\Http\Controllers\MultimediaController@uservideo')->name('multimedia.uservideo');
 
     Route::get('/search', 'App\Http\Controllers\MultimediaController@search')->name('search')->middleware('auth');
+   
 
 
 

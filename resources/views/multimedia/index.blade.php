@@ -70,7 +70,7 @@ video {
             <div class="col-md-4" >
             <a href="{{ route('multimedia.show', $multimediaItem) }}">
                 <div class="video-container "  style="width: 400px; height: 250px; overflow: hidden; background-color: #FFF;">
-           <video onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" width="400" height="250">
+           <video muted onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" width="400" height="250">
     <source src="{{ route('multimedia.stream', $multimediaItem->filepath) }}" type="video/mp4">
     Your browser does not support the video tag.
 </video>

@@ -38,25 +38,25 @@ Tip 2: you can also add an image using data-image tag
                     }
                     </style>
                     <ul class="nav">
-                        <li class="nav-item @if($activePage == 'user') active @endif">
+                        <li class="nav-item @if($activePage == 'channel') active @endif">
                             <a class="nav-link" href="{{route('profile.edit')}}">
                                 <i class="fas fa-tv"></i>
                                 <p>{{ __("Tu Canal") }}</p>
                             </a>
                         </li>
-                        <li class="nav-item @if($activePage == 'table') active @endif">
+                        <li class="nav-item @if($activePage == 'create') active @endif">
                             <a class="nav-link" href="{{ route('multimedias') }}">
                                 <i class="fas fa-upload"></i>
                                 <p>{{ __("Subir Videos") }}</p>
                             </a>
                         </li>
-                        <li class="nav-item @if($activePage == 'user-management') active @endif">
+                        <li class="nav-item @if($activePage == 'history') active @endif">
                             <a class="nav-link" href="">
                                 <i class="fas fa-history"></i>
                                 <p>{{ __("Historial") }}</p>
                             </a>
                         </li>
-                        <li class="nav-item @if($activePage == 'user-management') active @endif">
+                        <li class="nav-item @if($activePage == 'uservideo') active @endif">
                             <a class="nav-link" href="{{ route('multimedia.uservideo') }}">
 
                                 <i class="fas fa-play "></i>
@@ -89,38 +89,24 @@ Tip 2: you can also add an image using data-image tag
                 </a>
                 <div class="collapse @if($activeButton =='laravel') hidden @endif" id="Subscripcion">
                     <ul class="nav">
-
-                        <li class="nav-item">
-
-                            <i class="fas fa-user"></i>
-
-                            </a>
+                 
+                        <li class="nav-item @if($activePage == 'show') active @endif">
+                       
+                        <a class="nav-link" href="#">
+                 
+                 
+                </a>
+                          
                         </li>
-
+                     
                     </ul>
                 </div>
             </li>
 
 
 
-            <li class="nav-item @if($activePage == 'typography') active @endif">
-                <a class="nav-link" href="{{route('page.index', 'typography')}}">
-                    <i class="nc-icon nc-paper-2"></i>
-                    <p>{{ __("Subscripciones") }}</p>
-                </a>
-            </li>
-            <li class="nav-item @if($activePage == 'icons') active @endif">
-                <a class="nav-link" href="{{route('page.index', 'icons')}}">
-                    <i class="nc-icon nc-atom"></i>
-                    <p>{{ __("Icons") }}</p>
-                </a>
-            </li>
-            <li class="nav-item @if($activePage == 'maps') active @endif">
-                <a class="nav-link" href="{{route('page.index', 'maps')}}">
-                    <i class="nc-icon nc-pin-3"></i>
-                    <p>{{ __("Maps") }}</p>
-                </a>
-            </li>
+            
+         
             <li class="nav-item @if($activePage == 'notifications') active @endif">
                 <a class="nav-link" href="{{route('page.index', 'notifications')}}">
                     <i class="nc-icon nc-bell-55"></i>
