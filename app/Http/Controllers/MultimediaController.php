@@ -149,12 +149,13 @@ class MultimediaController extends Controller
           ]);
           $user = auth()->user();
           $file = $request->file('filepath');
-          $fileName = time().'_'.$request->file->getClientOriginalName();
+          $fileName = time().'_'.$file->getClientOriginalName();
+          $file->storeAs('videos', $fileName, 'public');
           $multimedia = new Multimedia([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'category' => $request->input('category'),
-            'filepath' => $request->file('filepath')->storeAs('videos', $request->file('filepath')->getClientOriginalName(), 'public'),
+            'filepath' => $fileName,
             'user_id' => $user->id,
         ]);
         $user->multimedia()->save($multimedia);
@@ -176,13 +177,27 @@ class MultimediaController extends Controller
               'title' => 'required',
               'description' => 'required',
               'category' => 'required',
-              'filepath' => 'required',
+              'filepath' => 'sometimes|mimes:mp4,mkv,avi,flv|max:1000240',
           ]);
-  
+      
           $multimediaItem = Multimedia::findOrFail($id);
+      
+          // Eliminar el archivo actual si se selecciona la casilla de verificación
+          if ($request->has('remove_filepath') && $request->input('remove_filepath') == 1) {
+              // Puedes almacenar el archivo actual en una variable si necesitas hacer algo con él
+              $currentFilepath = $multimediaItem->filepath;
+      
+              // Eliminar el archivo actual
+              Storage::delete($multimediaItem->filepath);
+      
+              // Actualizar el modelo para reflejar la eliminación del archivo
+              $multimediaItem->filepath = null;
+          }
+      
+          // Actualizar el modelo con los nuevos valores
           $multimediaItem->update($request->all());
-  
-          return redirect()->route('multimedia.index')
+          dd('Se ejecutó el método update');
+          return redirect()->route('dashboard')
               ->with('success', 'Multimedia item updated successfully.');
       }
   
