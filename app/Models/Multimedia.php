@@ -12,7 +12,7 @@ class Multimedia extends Model
         'user_id',
         'title',
         'description',
-        'category',
+        'category_id',
         'filepath',
     ];
    // Relación con el usuario
@@ -45,7 +45,7 @@ class Multimedia extends Model
     }
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'id_category'); // Asegúrate de que el nombre de la clave foránea sea correcto
     }
     
 }

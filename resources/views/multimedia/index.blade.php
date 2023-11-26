@@ -56,12 +56,24 @@ video {
 <div class="content">
     <div class="container-fluid">
     <div id="container-category" class="row mb-4 text-white text-center overflow-x-auto m-0">
-        @foreach ($multimediaItems as $index => $multimediaItem)
-            <div class="col-2 p-2">
-                <a href="#" style="color: #fff;">{{ $multimediaItem->category }}</a>
-            </div>
-        @endforeach
-    </div>
+    @php
+        $uniqueCategories = collect();
+    @endphp
+
+    @foreach ($multimediaItems as $index => $multimediaItem)
+        @if ($multimediaItem->category)
+            @php
+                $uniqueCategories->put($multimediaItem->category->id, $multimediaItem->category);
+            @endphp
+        @endif
+    @endforeach
+
+    @foreach ($uniqueCategories as $category)
+        <div class="col-2 p-2">
+            <a href="{{ route('search', ['category' => $category->id]) }}" style="color: #fff;">{{ $category->name }}</a>
+        </div>
+    @endforeach
+</div>
         @forelse ($multimediaItems as $index => $multimediaItem)
         @if ($index % 3 == 0)
         <div class="row">

@@ -28,6 +28,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                 <div class="mt-4">
                     <div class="col">
                         <h3>{{$multimediaItem->title}}</h3>
+                       
                     </div>
                     <div class="row">
                         <div class="col-auto ml-3">

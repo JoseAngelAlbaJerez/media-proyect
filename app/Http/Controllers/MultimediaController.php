@@ -21,15 +21,27 @@ class MultimediaController extends Controller
       public function search(Request $request)
       {
           $query = $request->input('query');
+          $categoryId = $request->input('category');
+          
+          $results = Multimedia::query();
       
-          // Realiza la búsqueda en el título y descripción de los elementos multimedia
-          $results = Multimedia::where('title', 'like', "%$query%")
-                               ->orWhere('description', 'like', "%$query%")
-                               ->get();
+          if ($query) {
+              $results->where(function ($queryBuilder) use ($query) {
+                  $queryBuilder->where('title', 'like', "%$query%")
+                               ->orWhere('description', 'like', "%$query%");
+              });
+          }
       
-          return view('multimedia.search', compact('results', 'query'));
+          if ($categoryId) {
+              $results->whereHas('category', function ($queryBuilder) use ($categoryId) {
+                  $queryBuilder->where('id', $categoryId);
+              });
+          }
+      
+          $results = $results->get();
+          $categoryName = $categoryId ? Category::find($categoryId)->name : null;
+          return view('multimedia.search', compact('results', 'query', 'categoryName'));
       }
-
       public function thumbnail($id)
 {
     $multimediaItem = Multimedia::findOrFail($id);
