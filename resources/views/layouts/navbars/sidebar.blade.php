@@ -9,7 +9,7 @@ Tip 2: you can also add an image using data-image tag
     <div class="sidebar-wrapper">
         <div class="logo">
             <button class="btn border-0" style='color: white;' id="sidebarToggle">
-                <i class="fa fa-bars"></i>
+            
 
             </button>
 

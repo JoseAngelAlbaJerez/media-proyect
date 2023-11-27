@@ -46,14 +46,14 @@
 
     position: relative;
     margin-left: 450px;
-    margin-top: 23px;
+    margin-top: 20px;
     width: 500px;
     height: 50px;
 
 
 }
 </style>
-<nav class="navbar navbar-expand-lg " color-on-scroll="500">
+<nav class="navbar navbar-expand-lg p-4 " color-on-scroll="500">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{route('dashboard')}}"> {{__('Youtuch') }} </a>
         <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -115,7 +115,7 @@
                         <a class="dropdown-item" href="#">{{ __('Separated link') }}</a>
                     </div>
                 </li>
-                <li class="nav-item mt-3">
+                <li class="nav-item mt-1">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                         <a class="text-danger" href="{{ route('logout') }}"

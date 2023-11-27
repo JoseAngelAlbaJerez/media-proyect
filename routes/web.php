@@ -6,7 +6,7 @@ use App\Models\Multimedia;
 use Iman\Streamer\VideoStreamer;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\WelcomeController;
-
+use App\Models\Category;
 use Illuminate\Support\Facades\View;
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +54,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/multimedia/{id}', [MultimediaController::class, 'destroy'])->name('multimedia.destroy');
 
     Route::get('/multimedia', function () {
-        return view('multimedia.create');
+        $categories = Category::all(); // Obtener todas las categorías, ajusta según sea necesario
+        return view('multimedia.create', compact('categories'));
     })->name('multimedias');
 	Route::get('/uservideo', 'App\Http\Controllers\MultimediaController@uservideo')->name('multimedia.uservideo');
 

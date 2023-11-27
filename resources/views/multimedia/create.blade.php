@@ -24,35 +24,36 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
 </script>
 
 <style>
-   input[type="file"]::file-selector-button {
-        /* Future CSS specification */
-        font-weight: bold;
-        color: white;
-        background-color: #0F0F0F;
-        border: 1px solid #0F0F0F;
-        border-radius: 3px;
-        padding: 0.2em 0.4em;
-        cursor: pointer;
-       
-       
-    }
-    input[type="file"] {
-       
-        color: white;
-        background-color: #0F0F0F;
-        border: 1px solid #0F0F0F;
-        border-radius: 3px;
-        padding-bottom: 35px; 
-        padding-right: 20px;
-        cursor: pointer;
-    
-    }
-    input[type="file"]::file-selector-button:hover,
-    input[type="file"]:hover {
-    
-        background-color: #1A1A1A;
-    }
-   
+input[type="file"]::file-selector-button {
+    /* Future CSS specification */
+    font-weight: bold;
+    color: white;
+    background-color: #0F0F0F;
+    border: 1px solid #0F0F0F;
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    cursor: pointer;
+
+
+}
+
+input[type="file"] {
+
+    color: white;
+    background-color: #0F0F0F;
+    border: 1px solid #0F0F0F;
+    border-radius: 3px;
+    padding-bottom: 35px;
+    padding-right: 20px;
+    cursor: pointer;
+
+}
+
+input[type="file"]::file-selector-button:hover,
+input[type="file"]:hover {
+
+    background-color: #1A1A1A;
+}
 </style>
 @section('content')
 <div class="content mt-5 ">
@@ -78,7 +79,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                             <h6 class="heading-small text-muted mb-4">{{ __('Información del Video') }}</h6>
 
                             @include('alerts.success')
-                         
+
 
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('title') ? ' has-danger' : '' }}">
@@ -102,26 +103,34 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                                     @include('alerts.feedback', ['field' => 'email'])
                                 </div>
                                 <div class="form-group{{ $errors->has('category') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-category"><i
-                                            class="w3-xxlarge fa fa-th-large"></i>{{ __('Categoria') }}</label>
-                                    <input type="text" name="category" id="input-category"
+                                    <label class="form-control-label" for="input-category">
+                                        <i class="w3-xxlarge fa fa-th-large"></i>{{ __('Categoria') }}
+                                    </label>
+
+                                    <select name="category" id="input-category"
                                         class="form-control{{ $errors->has('category') ? ' is-invalid' : '' }}"
                                         required>
+                                        @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
 
-                                   
                                     @include('alerts.feedback', ['field' => 'category'])
                                 </div>
+
                                 <div class="form-group{{ $errors->has('file') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-filepath"><i
                                             class="w3-xxlarge 	fa fa-play"></i>{{ __('Video') }}</label>
                                     <input type="file" name="filepath" id="input-filepath"
-                                        class="form-control{{ $errors->has('filepath') ? ' is-invalid' : '' }}"
-                                        required onchange="previewVideo(this)"  style=" background-color: #fff; color: #0F0F0F; border: 1px solid #0F0F0F; cursor: pointer;">
+                                        class="form-control{{ $errors->has('filepath') ? ' is-invalid' : '' }}" required
+                                        onchange="previewVideo(this)"
+                                        style=" background-color: #fff; color: #0F0F0F; border: 1px solid #0F0F0F; cursor: pointer;">
 
                                     @include('alerts.feedback', ['field' => 'filepath'])
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-default mt-4" style=" border-color: #0F0F0F; color: #0F0F0F;">{{ __('Guardar') }}</button>
+                                    <button type="submit" class="btn btn-default mt-4"
+                                        style=" border-color: #0F0F0F; color: #0F0F0F;">{{ __('Guardar') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -166,18 +175,18 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                 </div>
             </div>
         </div>
-       
+
         @endsection
 
         <script>
-    function previewVideo(input) {
-        var videoPreview = document.getElementById('video-preview');
-        var videoSource = document.getElementById('video-source');
+        function previewVideo(input) {
+            var videoPreview = document.getElementById('video-preview');
+            var videoSource = document.getElementById('video-source');
 
-        var file = input.files[0];
-        var objectURL = URL.createObjectURL(file);
+            var file = input.files[0];
+            var objectURL = URL.createObjectURL(file);
 
-        videoSource.src = objectURL;
-        videoPreview.load();
-    }
-</script>
+            videoSource.src = objectURL;
+            videoPreview.load();
+        }
+        </script>

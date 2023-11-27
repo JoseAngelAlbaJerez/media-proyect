@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Multimedia;
 use ProtoneMedia\LaravelFFMpeg\Support\FFMpeg;
 use App\Models\Category;
+
 class MultimediaController extends Controller
 {
       // Index page showing a list of multimedia items
@@ -138,12 +139,11 @@ class MultimediaController extends Controller
     {
         $multimediaItem = Multimedia::findOrFail($id);
     
-        // Retrieve recommended multimedia items (adjust the logic based on your requirements)
+        // Retrieve recommended multimedia items 
         $recommendedMultimediaItems = Multimedia::where('id_category', $multimediaItem->id_category)
         ->inRandomOrder()
-        ->take(5)
+        ->take(12   )
         ->get();
-
         
     
         return view('multimedia.show', compact('multimediaItem', 'recommendedMultimediaItems'));
@@ -152,7 +152,8 @@ class MultimediaController extends Controller
       // Display the form to create a new multimedia item
       public function create()
       {
-          return view('multimedia.create');
+          $categories = Category::all(); // Obtener todas las categorías
+          return view('multimedia.create', compact('categories'));
       }
     
   
@@ -185,7 +186,9 @@ class MultimediaController extends Controller
       public function edit($id)
       {
           $multimediaItem = Multimedia::findOrFail($id);
-          return view('multimedia.edit', compact('multimediaItem'));
+
+          $categories = Category::all();
+          return view('multimedia.edit', compact('multimediaItem','categories'));
       }
   
       // Update the specified multimedia item in the database
@@ -207,8 +210,8 @@ class MultimediaController extends Controller
               $currentFilepath = $multimediaItem->filepath;
       
               // Eliminar el archivo actual
-              Storage::delete($multimediaItem->filepath);
-      
+              Storage::delete($currentFilepath);
+            
               // Actualizar el modelo para reflejar la eliminación del archivo
               $multimediaItem->filepath = null;
           }

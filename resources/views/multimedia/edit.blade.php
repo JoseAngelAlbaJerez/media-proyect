@@ -69,13 +69,17 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                                     @include('alerts.feedback', ['field' => 'email'])
                                 </div>
                                 <div class="form-group{{ $errors->has('category') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-category"><i
-                                            class="w3-xxlarge fa fa-th-large"></i>{{ __('Categoria') }}</label>
-                                    <input type="text" name="category" id="input-category"
-                                        value="{{ old('category', $multimediaItem->category) }}"
+                                    <label class="form-control-label" for="input-category">
+                                        <i class="w3-xxlarge fa fa-th-large"></i>{{ __('Categoria') }}
+                                    </label>
+
+                                    <select name="category" id="input-category"
                                         class="form-control{{ $errors->has('category') ? ' is-invalid' : '' }}"
                                         required>
-
+                                        @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
 
                                     @include('alerts.feedback', ['field' => 'category'])
                                 </div>

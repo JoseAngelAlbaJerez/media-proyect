@@ -51,6 +51,7 @@ video {
 #container-category .col-2 {
     width: 150px; /* Puedes ajustar este valor según sea necesario */
     white-space: nowrap;
+    
 }
 </style>
 <div class="content">
@@ -70,7 +71,7 @@ video {
 
     @foreach ($uniqueCategories as $category)
         <div class="col-2 p-2">
-            <a href="{{ route('search', ['category' => $category->id]) }}" style="color: #fff;">{{ $category->name }}</a>
+            <a href="{{ route('search', ['category' => $category->id]) }}" style="color: #fff; ">{{ $category->name }}</a>
         </div>
     @endforeach
 </div>
@@ -81,7 +82,7 @@ video {
 
             <div class="col-md-4" >
             <a href="{{ route('multimedia.show', $multimediaItem) }}">
-                <div class="video-container "  style="width: 400px; height: 250px; overflow: hidden; background-color: #FFF;">
+                <div class="video-container "  style="width: 400px; height: 250px; overflow: hidden; background-color: transparent;">
            <video muted onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" width="400" height="250">
     <source src="{{ route('multimedia.stream', $multimediaItem->filepath) }}" type="video/mp4">
     Your browser does not support the video tag.
