@@ -18,14 +18,7 @@ video {
     top: 0;
     opacity: 1;
 }
-#container-category {
-       
-        border-radius: 10px; /* Ajusta el valor según sea necesario para redondear las esquinas */
-        padding: 10px; /* Agrega espacio interno para separar las categorías */
-        display: flex;
-        justify-content: space-between; /* Distribuye las categorías uniformemente */
-        align-items: center; /* Centra verticalmente las categorías */
-    }
+
     .col-2 {
         border: 7px solid #fff; /* Añade un borde para resaltar las categorías */
         border-radius: 25px; /* Redondea las esquinas de las categorías */
@@ -51,18 +44,36 @@ video {
         overflow: hidden;
         
     }
+    #container-category {
+    white-space: nowrap; /* Evita el salto de línea */
+    overflow-x: auto;     /* Permite desplazamiento horizontal */
+}
+#container-category .col-2 {
+    width: 150px; /* Puedes ajustar este valor según sea necesario */
+    white-space: nowrap;
+}
 </style>
 <div class="content">
     <div class="container-fluid">
-        <div id="container-category"class="row mb-4 text-white text-center ">
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        <div class="col-2"><a href="" style="color: #fff;">Category</a></div>
-        
+    <div id="container-category" class="row mb-4 text-white text-center overflow-x-auto m-0">
+    @php
+        $uniqueCategories = collect();
+    @endphp
+
+    @foreach ($multimediaItems as $index => $multimediaItem)
+        @if ($multimediaItem->category)
+            @php
+                $uniqueCategories->put($multimediaItem->category->id, $multimediaItem->category);
+            @endphp
+        @endif
+    @endforeach
+
+    @foreach ($uniqueCategories as $category)
+        <div class="col-2 p-2">
+            <a href="{{ route('search', ['category' => $category->id]) }}" style="color: #fff;">{{ $category->name }}</a>
         </div>
+    @endforeach
+</div>
         @forelse ($multimediaItems as $index => $multimediaItem)
         @if ($index % 3 == 0)
         <div class="row">
@@ -70,8 +81,8 @@ video {
 
             <div class="col-md-4" >
             <a href="{{ route('multimedia.show', $multimediaItem) }}">
-                <div class="video-container"  style="width: 400px; height: 250px; overflow: hidden; background-color: #0F0F0F;">
-           <video width="400" height="250">
+                <div class="video-container "  style="width: 400px; height: 250px; overflow: hidden; background-color: #FFF;">
+           <video muted onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" width="400" height="250">
     <source src="{{ route('multimedia.stream', $multimediaItem->filepath) }}" type="video/mp4">
     Your browser does not support the video tag.
 </video>
@@ -110,3 +121,22 @@ video {
 <!-- Include Video.js JS -->
 <script src="https://vjs.zencdn.net/7.14.3/video.js"></script>
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const videoContainers = document.querySelectorAll('.video-container');
+
+        videoContainers.forEach(videoContainer => {
+            videoContainer.addEventListener('hover', () => {
+                const video = videoContainer.querySelector('video');
+                video.play();
+            });
+
+            videoContainer.addEventListener('mouseleave', () => {
+                const video = videoContainer.querySelector('video');
+                video.pause();
+                video.currentTime = 0;
+            });
+        });
+    });
+</script>

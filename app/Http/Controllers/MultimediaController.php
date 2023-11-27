@@ -11,13 +11,37 @@ class MultimediaController extends Controller
       // Index page showing a list of multimedia items
       public function index()
       {
-          $multimediaItems = Multimedia::with('user', 'category')->get();
-          $categories = Category::all();
+          $multimediaItems = Multimedia::with('user')->get();
+       
   
-          return view('multimedia.index', compact('multimediaItems', 'categories'));
+          return view('multimedia.index', compact('multimediaItems'));
       }
 
 
+      public function search(Request $request)
+      {
+          $query = $request->input('query');
+          $categoryId = $request->input('category');
+          
+          $results = Multimedia::query();
+      
+          if ($query) {
+              $results->where(function ($queryBuilder) use ($query) {
+                  $queryBuilder->where('title', 'like', "%$query%")
+                               ->orWhere('description', 'like', "%$query%");
+              });
+          }
+      
+          if ($categoryId) {
+              $results->whereHas('category', function ($queryBuilder) use ($categoryId) {
+                  $queryBuilder->where('id', $categoryId);
+              });
+          }
+      
+          $results = $results->get();
+          $categoryName = $categoryId ? Category::find($categoryId)->name : null;
+          return view('multimedia.search', compact('results', 'query', 'categoryName'));
+      }
       public function thumbnail($id)
 {
     $multimediaItem = Multimedia::findOrFail($id);
@@ -109,14 +133,21 @@ class MultimediaController extends Controller
               readfile($file);
           }
       }
-      // Show a specific multimedia item
-      public function show($id)
-      {
-          $multimediaItem = Multimedia::findOrFail($id);
-          
-          return view('multimedia.show', compact('multimediaItem'));
+    // Show a specific multimedia item
+    public function show($id)
+    {
+        $multimediaItem = Multimedia::findOrFail($id);
+    
+        // Retrieve recommended multimedia items (adjust the logic based on your requirements)
+        $recommendedMultimediaItems = Multimedia::where('id_category', $multimediaItem->id_category)
+        ->inRandomOrder()
+        ->take(5)
+        ->get();
 
-      }
+        
+    
+        return view('multimedia.show', compact('multimediaItem', 'recommendedMultimediaItems'));
+    }
   
       // Display the form to create a new multimedia item
       public function create()
@@ -137,12 +168,13 @@ class MultimediaController extends Controller
           ]);
           $user = auth()->user();
           $file = $request->file('filepath');
-          $fileName = time().'_'.$request->file->getClientOriginalName();
+          $fileName = time().'_'.$file->getClientOriginalName();
+          $file->storeAs('videos', $fileName, 'public');
           $multimedia = new Multimedia([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'category' => $request->input('category'),
-            'filepath' => $request->file('filepath')->storeAs('videos', $request->file('filepath')->getClientOriginalName(), 'public'),
+            'filepath' => $fileName,
             'user_id' => $user->id,
         ]);
         $user->multimedia()->save($multimedia);
@@ -164,13 +196,27 @@ class MultimediaController extends Controller
               'title' => 'required',
               'description' => 'required',
               'category' => 'required',
-              'filepath' => 'required',
+              'filepath' => 'sometimes|mimes:mp4,mkv,avi,flv|max:1000240',
           ]);
-  
+      
           $multimediaItem = Multimedia::findOrFail($id);
+      
+          // Eliminar el archivo actual si se selecciona la casilla de verificación
+          if ($request->has('remove_filepath') && $request->input('remove_filepath') == 1) {
+              // Puedes almacenar el archivo actual en una variable si necesitas hacer algo con él
+              $currentFilepath = $multimediaItem->filepath;
+      
+              // Eliminar el archivo actual
+              Storage::delete($multimediaItem->filepath);
+      
+              // Actualizar el modelo para reflejar la eliminación del archivo
+              $multimediaItem->filepath = null;
+          }
+      
+          // Actualizar el modelo con los nuevos valores
           $multimediaItem->update($request->all());
-  
-          return redirect()->route('multimedia.index')
+          dd('Se ejecutó el método update');
+          return redirect()->route('dashboard')
               ->with('success', 'Multimedia item updated successfully.');
       }
   
