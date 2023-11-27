@@ -62,7 +62,7 @@ video {
             <div class="col-md-4">
                 <a href="{{ route('multimedia.show', $multimediaItem) }}">
                     <div class="video-container">
-                        <video controls width="400" height="350">
+                        <video muted  width="400" height="350">
                             <source src="{{ route('multimedia.stream', $multimediaItem->filepath) }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
