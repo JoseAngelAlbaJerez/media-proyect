@@ -133,14 +133,21 @@ class MultimediaController extends Controller
               readfile($file);
           }
       }
-      // Show a specific multimedia item
-      public function show($id)
-      {
-          $multimediaItem = Multimedia::findOrFail($id);
-          
-          return view('multimedia.show', compact('multimediaItem'));
+    // Show a specific multimedia item
+    public function show($id)
+    {
+        $multimediaItem = Multimedia::findOrFail($id);
+    
+        // Retrieve recommended multimedia items (adjust the logic based on your requirements)
+        $recommendedMultimediaItems = Multimedia::where('id_category', $multimediaItem->id_category)
+        ->inRandomOrder()
+        ->take(5)
+        ->get();
 
-      }
+        
+    
+        return view('multimedia.show', compact('multimediaItem', 'recommendedMultimediaItems'));
+    }
   
       // Display the form to create a new multimedia item
       public function create()

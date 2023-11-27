@@ -28,7 +28,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                 <div class="mt-4">
                     <div class="col">
                         <h3>{{$multimediaItem->title}}</h3>
-                       
+
                     </div>
                     <div class="row">
                         <div class="col-auto ml-3">
@@ -36,7 +36,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                                 width="50" height="47" alt="">
                         </div>
                         <div class="col-auto">
-                            <h5>Channel Name</h5>
+                            <h5>{{$multimediaItem->user->name}}</h5>
                             <p>Subscriptions</p>
                         </div>
                         <div class="col-auto mr-5">
@@ -50,7 +50,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                                 <p>10</p>
                             </i> <!-- Dislike icon -->
                         </div>
-                        <div class="col-auto">
+                        <div class="col-auto " style="margin-right: 118px">
                             <button class="btn btn-dark rounded"><i class="fa fa-share"></i> Share</button>
                             <button class="btn btn-dark rounded"><i class="fa fa-download"></i> Download</button>
                             <button class="btn btn-dark rounded"><i class="fa fa-plus"></i> Save</button>
@@ -67,21 +67,18 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                         </div>
 
                         <div class="row m-2">
-                            <div class="col">
+                            <div class="col" style="display: none;">
                                 <p>{{ $multimediaItem->description }}</p>
                             </div>
                         </div>
-                        <a href="">show....</a>
+                        <a href="" style="display: none;">show more...</a>
 
                     </div>
 
 
                 </div>
 
-                {{-- Like and Dislike Buttons --}}
-                <div class="mt-4">
 
-                </div>
 
                 {{-- Comments Section --}}
                 <div class="mt-4">
@@ -104,14 +101,41 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                 </div>
             </div>
 
-            {{-- Lista de Imágenes --}}
+            {{-- Recommended Multimedia Items --}}
             <div class="col-md-4">
-                <ul>
-                   
-                        <li>
-                            
-                        </li>
-                  
+                <h3 class="ml-5">Recommended</h3>
+                <ul style="list-style-type: none;">
+                    @forelse ($recommendedMultimediaItems as $index => $recommendedItem)
+                    <li>
+
+                        <div class="col-md-4">
+                            <a href="{{ route('multimedia.show', $recommendedItem) }}">
+                                <div class="video-container"
+                                    style="width: 400px; height: 250px; overflow: hidden; background-color: #FFF;">
+                                    <video muted onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;"
+                                        width="400" height="250">
+                                        <source src="{{ route('multimedia.stream', $recommendedItem->filepath) }}"
+                                            type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="row">
+                                    <img src="https://dictionary.cambridge.org/images/thumb/circle_noun_001_02738.jpg?version=5.0.357"
+                                        width="50" height="47" alt="">
+                                    <div class="col">
+                                        <p>{{$recommendedItem->title}}</p>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <p style="color: #0F0F0F; font-weight: bold;">{{$multimediaItem->user->name}}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    @empty
+                    {{-- Logic for when there are no recommended items --}}
+                    <p>No recommended multimedia items found.</p>
+                    @endforelse
                 </ul>
             </div>
         </div>
