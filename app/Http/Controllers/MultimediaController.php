@@ -187,7 +187,7 @@ class MultimediaController extends Controller
               'user_id' => 'required',
               'title' => 'required',
               'description' => 'required',
-              'category' => 'required',
+              'id_category' => 'required',
               'filepath' => 'sometimes|mimes:mp4,mkv,avi,flv|max:1000240',
           ]);
       
