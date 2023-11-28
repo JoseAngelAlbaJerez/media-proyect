@@ -8,7 +8,10 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $videos = Multimedia::all();
+        $videos = Multimedia::all()
+        ->take(5)
+        
+        ;
 
         return view('welcome', compact('videos'));
     }

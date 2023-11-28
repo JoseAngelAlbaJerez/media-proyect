@@ -22,7 +22,7 @@
 
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="video-container">
+                                    <div class="video-container mb-5">
                                         <video class="video-js mb-5" controls width="700" height="400">
                                             <source src="{{ route('multimedia.stream', $video->filepath) }}" type="video/mp4">
                                             Your browser does not support the video tag.

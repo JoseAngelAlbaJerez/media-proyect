@@ -32,10 +32,10 @@ Tip 2: you can also add an image using data-image tag
 
                 </a>
                 <div class="collapse @if($activeButton =='laravel') hidden @endif" id="laravelExamples">
-                    <style>
+                    <!-- <style>
                     .fas {
                         display: none;
-                    }
+                    } -->
                     </style>
                     <ul class="nav">
                         <li class="nav-item @if($activePage == 'channel') active @endif">
@@ -147,7 +147,7 @@ $(document).ready(function() {
 </script>
 <style>
 #my_icon {
-    transition: transform 0.2s ease;
+    transition: transform 0.1s ease;
     /* Adjust the transition duration as needed */
 }
 

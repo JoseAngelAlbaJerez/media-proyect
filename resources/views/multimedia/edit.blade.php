@@ -106,18 +106,10 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                                     @include('alerts.feedback', ['field' => 'filepath'])
                                 </div>
 
-                                <!-- <div class="form-group{{ $errors->has('thumbnail') ? ' has-danger' : '' }}">
-                                    <label class="form-control-label" for="input-thumbnail">
-                                        <i class="w3-xxlarge fa fa-image"></i>{{ __('Thumbnail') }}
-                                    </label>
-                                    <input type="file" name="thumbnail" id="input-thumbnail"
-                                        class="form-control{{ $errors->has('thumbnail') ? ' is-invalid' : '' }}"
-                                        required onchange="previewThumbnail(this)">
-                                    @include('alerts.feedback', ['field' => 'thumbnail'])
-                                </div> -->
+                              
 
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-default mt-4">{{ __('Save') }}</button>
+                                    <button type="submit" class="btn btn-default mt-4">{{ __('Guardar') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -134,8 +126,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
 
                         <div class="card-body mt-5">
                             <h2>{{$multimediaItem->title}}</h2>
-
-
+                            <h6 class="heading-small text-muted mb-2 ml-2">{{ __('Vista Previa del Video') }}</h6>
                             @if (!empty($multimediaItem->filepath))
                             <video id="my-video" class="video-js vjs-default-skin" controls width="100%" height="100%"
                                 data-setup="{}">
@@ -148,8 +139,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                             <p>No video available.</p>
                             @endif
 
-                            <img id="thumbnail-preview" src="" alt="Thumbnail Preview"
-                                style="display: none; max-width: 100%; height: auto;">
+                        
                         </div>
 
                         </video>

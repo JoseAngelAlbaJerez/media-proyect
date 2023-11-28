@@ -218,9 +218,9 @@ class MultimediaController extends Controller
       
           // Actualizar el modelo con los nuevos valores
           $multimediaItem->update($request->all());
-          dd('Se ejecutó el método update');
-          return redirect()->route('dashboard')
-              ->with('success', 'Multimedia item updated successfully.');
+          return back()->withStatus(__('Multimedia successfully updated.'));
+              
+             
       }
   
       // Delete the specified multimedia item from the database
