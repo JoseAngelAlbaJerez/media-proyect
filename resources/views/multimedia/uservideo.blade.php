@@ -19,20 +19,20 @@ video {
 }
 #container-category {
        
-        border-radius: 10px; /* Ajusta el valor según sea necesario para redondear las esquinas */
-        padding: 10px; /* Agrega espacio interno para separar las categorías */
+        border-radius: 10px; 
+        padding: 10px; 
         display: flex;
-        justify-content: space-between; /* Distribuye las categorías uniformemente */
-        align-items: center; /* Centra verticalmente las categorías */
+        justify-content: space-between; 
+        align-items: center; 
     }
     .col-2 {
-        border: 7px solid #fff; /* Añade un borde para resaltar las categorías */
-        border-radius: 25px; /* Redondea las esquinas de las categorías */
-        padding: 10px; /* Agrega espacio interno para las categorías */
+        border: 7px solid #fff; 
+        border-radius: 25px; 
+        padding: 10px; 
         background: #0f0f0f;
         
     }.col-2:hover {
-    background: #2a2a2a; /* Cambia el color al pasar el cursor sobre la categoría */
+    background: #2a2a2a;
     cursor: pointer;
 }  
 
@@ -40,10 +40,10 @@ video {
         color: #fff;
         text-decoration: none;
         
-        width: 100%; /* Adjust this as needed */
-        height: auto; /* Maintain aspect ratio */
-        max-width: 100%; /* Ensure video doesn't exceed its container */
-        display: block; /* Remove extra space below inline elements */
+        width: 100%;
+        height: auto; 
+        max-width: 100%; 
+        display: block;
     }
 .video-container {
         position: relative;
@@ -101,9 +101,8 @@ video {
     </div>
 </div>
 
-<!-- Include Video.js CSS -->
+
 <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet">
 
-<!-- Include Video.js JS -->
 <script src="https://vjs.zencdn.net/7.14.3/video.js"></script>
 @endsection

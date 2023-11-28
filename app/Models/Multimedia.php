@@ -15,25 +15,21 @@ class Multimedia extends Model
         'category_id',
         'filepath',
     ];
-   // Relación con el usuario
    public function user()
    {
        return $this->belongsTo(User::class);
    }
 
-   // Relación muchos a muchos con Playlist
    public function playlists()
    {
        return $this->belongsToMany(Playlist::class, 'playlist_multimedia', 'multimedia_id', 'playlist_id');
    }
 
-   // Relación uno a muchos con SocialInteraction
    public function socialInteractions()
    {
        return $this->hasMany(SocialInteraction::class, 'media_id');
    }
 
-   // Relación uno a uno con Copyright
    public function copyright()
    {
        return $this->hasOne(Copyright::class, 'media_id');
@@ -45,7 +41,7 @@ class Multimedia extends Model
     }
     public function category()
     {
-        return $this->belongsTo(Category::class, 'id_category'); // Asegúrate de que el nombre de la clave foránea sea correcto
+        return $this->belongsTo(Category::class, 'id_category');
     }
     
 }

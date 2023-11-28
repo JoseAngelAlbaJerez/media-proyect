@@ -1,4 +1,3 @@
-<!-- resources/views/multimedia/search.blade.php -->
 @extends('layouts.app', ['activePage' => 'user', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim &
 UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
 

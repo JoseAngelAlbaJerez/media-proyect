@@ -20,7 +20,7 @@ class UserController extends Controller
     }
     public function mostrarSidebar()
     {
-        $usuarios = User::all(); // Otra lógica para obtener la lista de usuarios
+        $usuarios = User::all();
         return view('layouts.navbars.sidebar', compact('usuarios'));
     }
     

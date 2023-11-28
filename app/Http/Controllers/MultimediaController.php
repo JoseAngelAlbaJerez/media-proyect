@@ -9,7 +9,6 @@ use App\Models\Category;
 
 class MultimediaController extends Controller
 {
-      // Index page showing a list of multimedia items
       public function index()
       {
           $multimediaItems = Multimedia::with('user')->get();
@@ -47,11 +46,9 @@ class MultimediaController extends Controller
 {
     $multimediaItem = Multimedia::findOrFail($id);
 
-    // Define the paths
     $videoPath = storage_path("app/public/videos/TteJsDvF6SOJvwLrWkdcyfGt7oFOpevy2M3eOp4v.mp4");
     $thumbnailPath = storage_path("app/public/thumbnails/{$multimediaItem->id}.png");
 
-    // Use FFMpeg to generate a thumbnail
 
     $output = FFMpeg::open('app/public/videos/TteJsDvF6SOJvwLrWkdcyfGt7oFOpevy2M3eOp4v.mp4')
         ->getFrameFromSeconds(1)
@@ -60,7 +57,6 @@ class MultimediaController extends Controller
         ->save('app/public/thumbnails/image.jpg');
     
 
-    // Return the response with the correct public path
     return response()->file('app/public/thumbnails/image.jpg');
 }
 
@@ -129,17 +125,14 @@ class MultimediaController extends Controller
               fclose($fh);
               exit;
           } else {
-              // Regular request
               header(sprintf('Content-Length: %d', $length));
               readfile($file);
           }
       }
-    // Show a specific multimedia item
     public function show($id)
     {
         $multimediaItem = Multimedia::findOrFail($id);
     
-        // Retrieve recommended multimedia items 
         $recommendedMultimediaItems = Multimedia::where('id_category', $multimediaItem->id_category)
         ->inRandomOrder()
         ->take(12   )
@@ -149,15 +142,13 @@ class MultimediaController extends Controller
         return view('multimedia.show', compact('multimediaItem', 'recommendedMultimediaItems'));
     }
   
-      // Display the form to create a new multimedia item
       public function create()
       {
-          $categories = Category::all(); // Obtener todas las categorías
+          $categories = Category::all(); 
           return view('multimedia.create', compact('categories'));
       }
     
   
-      // Store a newly created multimedia item in the database
       public function store(Request $request)
       {
           $request->validate([
@@ -182,7 +173,6 @@ class MultimediaController extends Controller
         return redirect()->route('dashboard')->with('success', 'Multimedia item created successfully.');
 }
   
-      // Display the form to edit a multimedia item
       public function edit($id)
       {
           $multimediaItem = Multimedia::findOrFail($id);
@@ -191,7 +181,6 @@ class MultimediaController extends Controller
           return view('multimedia.edit', compact('multimediaItem','categories'));
       }
   
-      // Update the specified multimedia item in the database
       public function update(Request $request, $id)
       {
           $request->validate([
@@ -204,26 +193,23 @@ class MultimediaController extends Controller
       
           $multimediaItem = Multimedia::findOrFail($id);
       
-          // Eliminar el archivo actual si se selecciona la casilla de verificación
+      
           if ($request->has('remove_filepath') && $request->input('remove_filepath') == 1) {
-              // Puedes almacenar el archivo actual en una variable si necesitas hacer algo con él
+           
               $currentFilepath = $multimediaItem->filepath;
       
-              // Eliminar el archivo actual
+        
               Storage::delete($currentFilepath);
             
-              // Actualizar el modelo para reflejar la eliminación del archivo
               $multimediaItem->filepath = null;
           }
       
-          // Actualizar el modelo con los nuevos valores
           $multimediaItem->update($request->all());
           return back()->withStatus(__('Multimedia successfully updated.'));
               
              
       }
   
-      // Delete the specified multimedia item from the database
       public function destroy($id)
       {
           $multimediaItem = Multimedia::findOrFail($id);

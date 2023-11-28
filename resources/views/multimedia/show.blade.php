@@ -141,13 +141,13 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
         </div>
     </div>
 </div>
-<!-- Incluir el CSS de Video.js -->
+
 <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet">
 
-<!-- Incluir el JS de Video.js -->
+
 <script src="https://vjs.zencdn.net/7.14.3/video.js"></script>
 <script>
-// Inicializar Video.js
+
 var player = videojs('my-video');
 </script>
 
