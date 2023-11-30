@@ -42,11 +42,12 @@ video {
 .video-container {
         position: relative;
         overflow: hidden;
-        
+      
     }
     #container-category {
     white-space: nowrap; /* Evita el salto de línea */
     overflow-x: auto;     /* Permite desplazamiento horizontal */
+
 }
 #container-category .col-2 {
     width: 150px; /* Puedes ajustar este valor según sea necesario */
@@ -55,8 +56,8 @@ video {
 }
 </style>
 <div class="content">
-    <div class="container-fluid">
-    <div id="container-category" class="row mb-4 text-white text-center overflow-x-auto m-0">
+    <div class="container-fluid ">
+    <div id="container-category " class="row mb-4 ml-5 text-white text-center overflow-x-auto m-0">
     @php
         $uniqueCategories = collect();
     @endphp
