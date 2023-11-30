@@ -193,22 +193,39 @@ class MultimediaController extends Controller
       
           $multimediaItem = Multimedia::findOrFail($id);
       
-      
           if ($request->has('remove_filepath') && $request->input('remove_filepath') == 1) {
-           
               $currentFilepath = $multimediaItem->filepath;
-      
-        
               Storage::delete($currentFilepath);
-            
               $multimediaItem->filepath = null;
           }
       
-          $multimediaItem->update($request->all());
+        
+          $multimediaItem->fill([
+              'user_id' => $request->input('user_id'),
+              'title' => $request->input('title'),
+              'description' => $request->input('description'),
+              'id_category' => $request->input('id_category'),
+          ]);
+      
+      
+          if ($request->hasFile('filepath')) {
+              $file = $request->file('filepath');
+              $fileName = time() . '_' . $file->getClientOriginalName();
+              $file->storeAs('videos', $fileName, 'public');
+              $multimediaItem->filepath = $fileName;
+          }
+      
+          try {
+            $multimediaItem->save();
+        } catch (\Exception $e) {
+            // Log or dump the error for debugging
+            dd($e->getMessage());
+        }
+        
+      
           return back()->withStatus(__('Multimedia successfully updated.'));
-              
-             
       }
+      
   
       public function destroy($id)
       {
