@@ -1,6 +1,7 @@
 <!-- users/index.blade.php -->
 
-@extends('layouts.app') <!-- Assuming you have a layout file -->
+@extends('layouts.app', ['activePage' => 'show', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim &
+UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
 
 @section('content')
     <h2>List of Users</h2>

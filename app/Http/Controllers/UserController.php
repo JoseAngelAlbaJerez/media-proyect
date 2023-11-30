@@ -23,6 +23,13 @@ class UserController extends Controller
         $usuarios = User::all();
         return view('layouts.navbars.sidebar', compact('usuarios'));
     }
+    public function show($id)
+    {
+        $userItem = User::findOrFail($id);
+        $videos = $userItem->multimedia;
+        return view('users.show', compact('userItem','videos'));
+    }
+    
     
  
 }
