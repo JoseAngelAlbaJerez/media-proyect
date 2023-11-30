@@ -31,14 +31,14 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
 
                     </div>
                     <div class="row">
-                        <div class="col-auto ml-3">
+                        <div class="col-auto ml-3"><a href="{{ route('users.show', $multimediaItem->user->id) }}">
                             <img src="https://dictionary.cambridge.org/images/thumb/circle_noun_001_02738.jpg?version=5.0.357"
                                 width="50" height="47" alt="">
                         </div>
                         <div class="col-auto">
                             <h5>{{$multimediaItem->user->name}}</h5>
                             <p>Subscriptions</p>
-                        </div>
+                        </div></a>
                         <div class="col-auto mr-5">
                             <button class="btn btn-dark rounded">Subscribe</button>
                         </div>

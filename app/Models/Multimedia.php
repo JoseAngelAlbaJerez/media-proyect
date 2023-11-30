@@ -34,11 +34,7 @@ class Multimedia extends Model
    {
        return $this->hasOne(Copyright::class, 'media_id');
    }
-  public function getPath()
-    {
-        $url = 'uploads/'.$this->file_path;
-        return $url;
-    }
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'id_category');
