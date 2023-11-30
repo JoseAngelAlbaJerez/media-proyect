@@ -8,10 +8,6 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
             <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
             <div class="row">
 
-
-
-
-
                 <div class="col-md-12">
                     <div class="card card-user">
                         <div class="card-image p-5" style="background: #0f0f0f;">
@@ -21,13 +17,13 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                             <div class="author">
                                 <a href="#">
                                     <img class="avatar border-gray"
-                                        src="{{ asset('light-bootstrap/img/faces/face-3.jpg') }}" alt="...">
-                                    <h5 class="title">{{ old('name', auth()->user()->name) }}</h5>
+                                        src="{{ asset('light-bootstrap/img/faces/face-3.jpg') }}" alt="..." style="background-color: black;">
+                                    <h5 class="title">{{ old('name', $userItem->name) }}</h5>
                                 </a>
-                                <a href="{{ old('email', auth()->user()->email) }}" style="color: #0f0f0f;">
+                                <a href="{{ old('email', $userItem->email) }}" style="color: #0f0f0f;">
                                     <p class="description">
 
-                                        {{ old('email', auth()->user()->email) }}
+                                        {{ old('email', $userItem->email) }}
                                     </p>
                                 </a>
                             </div>

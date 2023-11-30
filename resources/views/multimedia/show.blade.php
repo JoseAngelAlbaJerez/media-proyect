@@ -37,7 +37,7 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                         </div>
                         <div class="col-auto">
                             <h5>{{$multimediaItem->user->name}}</h5>
-                            <p>Subscriptions</p>
+                            <p>300k</p>
                         </div></a>
                         <div class="col-auto mr-5">
                             <button class="btn btn-dark rounded">Subscribe</button>
@@ -118,19 +118,23 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                                             type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
-                                </div>
-                                <div class="row">
+                                </div>   </div>
+
+                                <div class="row ml-2">
                                     <img src="https://dictionary.cambridge.org/images/thumb/circle_noun_001_02738.jpg?version=5.0.357"
-                                        width="50" height="47" alt="">
-                                    <div class="col">
-                                        <p>{{$recommendedItem->title}}</p>
+                                        width="50" height="47" alt="" class="mb-auto">
+                                    <div class="col mt-2">
+                                        <p style="color: #0F0F0F;"><b>{{$recommendedItem->title}}</b></p>
                                     </div>
                                 </div>
-                                <div class="row mt-2">
-                                    <p style="color: #0F0F0F; font-weight: bold;">{{$multimediaItem->user->name}}</p>
+                                <div class="row mt-2 ml-2">
+                                    <p >{{$multimediaItem->user->name}}</p>
+
+                                    <p class="ml-2 mb-2">   2k views 
+                                            {{ $multimediaItem->created_at->diffForHumans() }}</p>
                                 </div>
                             </a>
-                        </div>
+                     
                     </li>
                     @empty
                     {{-- Logic for when there are no recommended items --}}
