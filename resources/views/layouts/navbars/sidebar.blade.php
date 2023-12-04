@@ -14,10 +14,10 @@ Tip 2: you can also add an image using data-image tag
             </button>
 
         </div>
-        <ul class="nav">
+        <ul class="nav mt-3">
             <li class="nav-item @if($activePage == 'dashboard') active @endif">
                 <a class="nav-link" href="{{route('dashboard')}}">
-                    <!-- <i class="fas fa-home"></i> -->
+                   <i class="fas fa-home"></i> 
                     <p>{{ __("Home") }}</p>
                 </a>
             </li>
