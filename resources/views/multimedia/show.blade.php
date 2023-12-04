@@ -32,13 +32,17 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                     </div>
                     <div class="row">
                         <div class="col-auto ml-3"><a href="{{ route('users.show', $multimediaItem->user->id) }}">
-                            <img src="https://dictionary.cambridge.org/images/thumb/circle_noun_001_02738.jpg?version=5.0.357"
-                                width="50" height="47" alt="">
+                                <img src="https://dictionary.cambridge.org/images/thumb/circle_noun_001_02738.jpg?version=5.0.357"
+                                    width="50" height="47" alt="">
                         </div>
-                        <div class="col-auto">
-                            <h5>{{$multimediaItem->user->name}}</h5>
-                            <p>300k</p>
-                        </div></a>
+                        <div class="col-auto mt-3 text-dark ">
+                          <b><h5>{{$multimediaItem->user->name}} 300k</h5></b> 
+                           
+                        </div>
+                      
+                     
+                    
+                    </a>
                         <div class="col-auto mr-5">
                             <button class="btn btn-dark rounded">Subscribe</button>
                         </div>
@@ -52,7 +56,9 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                         </div>
                         <div class="col-auto " style="margin-right: 118px">
                             <button class="btn btn-dark rounded"><i class="fa fa-share"></i> Share</button>
-                            <button class="btn btn-dark rounded"><i class="fa fa-download"></i> Download</button>
+                            <a href="{{ route('multimedia.download', ['filename' => $multimediaItem->filepath]) }}"
+                                class="btn btn-dark rounded"> <i class="fa fa-download"></i> Download
+                            </a>
                             <button class="btn btn-dark rounded"><i class="fa fa-plus"></i> Save</button>
                             <button class="btn btn-dark rounded"><i class="fa text-center"></i> ...</button>
                         </div>
@@ -118,23 +124,24 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
                                             type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
-                                </div>   </div>
-
-                                <div class="row ml-2">
-                                    <img src="https://dictionary.cambridge.org/images/thumb/circle_noun_001_02738.jpg?version=5.0.357"
-                                        width="50" height="47" alt="" class="mb-auto">
-                                    <div class="col mt-2">
-                                        <p style="color: #0F0F0F;"><b>{{$recommendedItem->title}}</b></p>
-                                    </div>
                                 </div>
-                                <div class="row mt-2 ml-2">
-                                    <p >{{$multimediaItem->user->name}}</p>
+                        </div>
 
-                                    <p class="ml-2 mb-2">   2k views 
-                                            {{ $multimediaItem->created_at->diffForHumans() }}</p>
-                                </div>
-                            </a>
-                     
+                        <div class="row ml-2">
+                            <img src="https://dictionary.cambridge.org/images/thumb/circle_noun_001_02738.jpg?version=5.0.357"
+                                width="50" height="47" alt="" class="mb-auto">
+                            <div class="col mt-2">
+                                <p style="color: #0F0F0F;"><b>{{$recommendedItem->title}}</b></p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 ml-2">
+                            <p>{{$multimediaItem->user->name}}</p>
+
+                            <p class="ml-2 mb-2"> 2k views
+                                {{ $multimediaItem->created_at->diffForHumans() }}</p>
+                        </div>
+                        </a>
+
                     </li>
                     @empty
                     {{-- Logic for when there are no recommended items --}}
@@ -151,7 +158,6 @@ UPDIVISION', 'navName' => 'User Profile', 'activeButton' => 'laravel'])
 
 <script src="https://vjs.zencdn.net/7.14.3/video.js"></script>
 <script>
-
 var player = videojs('my-video');
 </script>
 

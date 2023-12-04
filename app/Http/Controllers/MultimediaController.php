@@ -225,7 +225,31 @@ class MultimediaController extends Controller
       
           return back()->withStatus(__('Multimedia successfully updated.'));
       }
+      public function download($filename)
+      {
+          $storagePath = storage_path('app/public/videos');
+          $filePath = $storagePath . DIRECTORY_SEPARATOR . $filename;
       
+          if (file_exists($filePath)) {
+              $multimediaItem = Multimedia::where('filepath', $filename)->first();
+      
+         
+              if (!$multimediaItem) {
+                  abort(404, 'Multimedia not found');
+              }
+              $videoTitle = $multimediaItem->title;
+              
+              $headers = [
+                  'Content-Type' => 'video/mp4',
+                  'Content-Disposition' => 'attachment; filename="' . $videoTitle . '.mp4"',
+              ];
+      
+              return response()->file($filePath, $headers);
+          } else {
+              abort(404, 'File not found');
+          }
+      }
+  
   
       public function destroy($id)
       {

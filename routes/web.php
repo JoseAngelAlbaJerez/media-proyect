@@ -54,9 +54,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/multimedia/{id}/edit', [MultimediaController::class, 'edit'])->name('multimedia.edit');
     Route::put('/multimedia/{id}', [MultimediaController::class, 'update'])->name('multimedia.update');
     Route::delete('/multimedia/{id}', [MultimediaController::class, 'destroy'])->name('multimedia.destroy');
+    Route::get('/multimedia/download/{filename}', 'App\Http\Controllers\MultimediaController@download')->name('multimedia.download');
 
     Route::get('/multimedia', function () {
-        $categories = Category::all(); // Obtener todas las categorías, ajusta según sea necesario
+        $categories = Category::all(); 
         return view('multimedia.create', compact('categories'));
     })->name('multimedias');
 	Route::get('/uservideo', 'App\Http\Controllers\MultimediaController@uservideo')->name('multimedia.uservideo');
