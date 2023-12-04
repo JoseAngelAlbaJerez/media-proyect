@@ -31,7 +31,7 @@ Tip 2: you can also add an image using data-image tag
                     </p>
 
                 </a>
-                <div class="collapse @if($activeButton =='laravel') hidden @endif" id="laravelExamples">
+                <div class="collapse @if($activeButton =='laravel') show @endif" id="laravelExamples">
                     <!-- <style>
                     .fas {
                         display: none;
